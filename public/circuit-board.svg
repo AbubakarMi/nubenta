@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" stroke="hsl(var(--accent))" stroke-width="0.5" fill="none">
+  <path d="M0 10 L10 10 L10 0" />
+  <path d="M0 30 L10 30 L10 20 L20 20 L20 10 L30 10 L30 0" />
+  <path d="M0 50 L10 50 L10 40 L20 40 L20 30 L30 30 L30 20 L40 20 L40 10 L50 10 L50 0" />
+  <path d="M0 70 L10 70 L10 60 L20 60 L20 50 L30 50 L30 40 L40 40 L40 30 L50 30 L50 20 L60 20 L60 10 L70 10 L70 0" />
+  <path d="M0 90 L10 90 L10 80 L20 80 L20 70 L30 70 L30 60 L40 60 L40 50 L50 50 L50 40 L60 40 L60 30 L70 30 L70 20 L80 20 L80 10 L90 10 L90 0" />
+  <path d="M10 100 L10 90 L20 90 L20 80 L30 80 L30 70 L40 70 L40 60 L50 60 L50 50 L60 50 L60 40 L70 40 L70 30 L80 30 L80 20 L90 20 L90 10 L100 10" />
+  <path d="M30 100 L30 90 L40 90 L40 80 L50 80 L50 70 L60 70 L60 60 L70 70 L70 80 L80 80 L80 90 L90 90 L90 100" />
+  <path d="M50 100 L50 90 L60 90 L60 80 L70 80 L70 70 L80 70 L80 60 L90 60 L90 50 L100 50" />
+  <path d="M70 100 L70 90 L80 90 L80 80 L90 80 L90 70 L100 70" />
+  <path d="M90 100 L90 90 L100 90" />
+  <circle cx="10" cy="10" r="2" fill="hsl(var(--accent))" />
+  <circle cx="30" cy="30" r="2" fill="hsl(var(--accent))" />
+  <circle cx="50" cy="50" r="2" fill="hsl(var(--accent))" />
+  <circle cx="70" cy="70" r="2" fill="hsl(var(--accent))" />
+  <circle cx="90" cy="90" r="2" fill="hsl(var(--accent))" />
+  <circle cx="10" cy="50" r="2" fill="hsl(var(--accent))" />
+  <circle cx="30" cy="70" r="2" fill="hsl(var(--accent))" />
+  <circle cx="50" cy="10" r="2" fill="hsl(var(--accent))" />
+  <circle cx="50" cy="90" r="2" fill="hsl(var(--accent))" />
+  <circle cx="90" cy="50" r="2" fill="hsl(var(--accent))" />
+  <circle cx="70" cy="30" r="2" fill="hsl(var(--accent))" />
+</svg>

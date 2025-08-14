@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ScrollReveal } from './scroll-reveal';
 import { Cpu } from 'lucide-react';
+import Link from 'next/link';
 
 export function CompaniesSection() {
   return (
@@ -18,24 +19,26 @@ export function CompaniesSection() {
         
         <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3 justify-center">
           <ScrollReveal delay={200}>
-            <Card className="group transform hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 overflow-hidden">
-              <CardHeader>
-                <div className="flex items-center gap-4">
-                  <div className="bg-primary text-primary-foreground p-3 rounded-lg">
-                    <Cpu className="h-8 w-8" />
+            <Link href="/technology">
+              <Card className="group transform hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 overflow-hidden bg-card h-full">
+                <CardHeader>
+                  <div className="flex items-center gap-4">
+                    <div className="bg-primary text-primary-foreground p-3 rounded-lg">
+                      <Cpu className="h-8 w-8" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-xl font-bold text-primary">Nubenta Technology</CardTitle>
+                      <CardDescription>Tech &amp; Innovation</CardDescription>
+                    </div>
                   </div>
-                  <div>
-                    <CardTitle className="text-xl font-bold text-primary">Nubenta Technology</CardTitle>
-                    <CardDescription>Tech &amp; Innovation</CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-foreground/80">
-                  Specializing in cutting-edge software development, cloud solutions, and digital transformation services to propel businesses into the future.
-                </p>
-              </CardContent>
-            </Card>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-foreground/80">
+                    Specializing in cutting-edge software development, cloud solutions, and digital transformation services to propel businesses into the future.
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
           </ScrollReveal>
           
           <ScrollReveal delay={400}>

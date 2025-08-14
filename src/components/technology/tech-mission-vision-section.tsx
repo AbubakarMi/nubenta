@@ -1,19 +1,12 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { ScrollReveal } from "./scroll-reveal";
+import { ScrollReveal } from "../scroll-reveal";
 import { Target, Eye } from "lucide-react";
 
-export function MissionVisionSection() {
+export function TechMissionVisionSection() {
   return (
-    <section id="mission-vision" className="py-20 lg:py-32 bg-secondary/50">
+    <section id="mission-vision" className="py-20 lg:py-32">
       <div className="container mx-auto px-4 md:px-6">
-        <ScrollReveal>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tighter text-primary text-center">
-            Our Core Purpose
-          </h2>
-          <div className="mt-4 w-24 h-1.5 bg-accent mx-auto" />
-        </ScrollReveal>
-        
-        <div className="mt-12 grid gap-8 md:grid-cols-2">
+        <div className="grid gap-12 md:grid-cols-2">
           <ScrollReveal delay={200}>
             <Card className="h-full transform hover:-translate-y-2 transition-transform duration-300 shadow-lg border-l-4 border-accent bg-card">
               <CardHeader className="flex-row items-center gap-4">
@@ -24,7 +17,7 @@ export function MissionVisionSection() {
               </CardHeader>
               <CardContent>
                 <p className="text-base text-foreground/80 leading-relaxed">
-                  To empower businesses and communities through innovation, technology, and strategic solutions that shape a better future.
+                  To create cutting-edge digital solutions that empower businesses to achieve more.
                 </p>
               </CardContent>
             </Card>
@@ -40,7 +33,7 @@ export function MissionVisionSection() {
               </CardHeader>
               <CardContent>
                 <p className="text-base text-foreground/80 leading-relaxed">
-                  To be Africa’s most trusted and forward-thinking group of companies, driving sustainable impact across industries.
+                  To be Africa’s leading technology innovator, delivering world-class solutions with global impact.
                 </p>
               </CardContent>
             </Card>

@@ -16,14 +16,14 @@
     --primary: 233 37% 17%; /* #1B1F3B */
     --primary-foreground: 210 17% 98%;
     
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 240 5.9% 10%;
+    --secondary: 233 37% 17%;
+    --secondary-foreground: 210 17% 98%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 240 5.9% 10%;
     
     --accent: 171 100% 37%; /* #00BFA6 */
-    --accent-foreground: 210 17% 98%;
+    --accent-foreground: 0 0% 7%;
     
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
@@ -36,17 +36,17 @@
   }
 
   .dark {
-    --background: 233 37% 10%; /* Darker Blue */
+    --background: 0 0% 7%; /* #121212 */
     --foreground: 210 17% 98%; /* Light Gray */
     
-    --card: 233 37% 13%;
+    --card: 240 4% 10%;
     --card-foreground: 210 17% 98%;
     
     --popover: 233 37% 13%;
     --popover-foreground: 210 17% 98%;
     
     --primary: 210 17% 98%; /* Light Gray for primary text on dark bg */
-    --primary-foreground: 233 37% 17%; /* Dark Blue for text on light primary components */
+    --primary-foreground: 0 0% 7%;
     
     --secondary: 233 37% 17%; /* Dark Blue */
     --secondary-foreground: 210 17% 98%; /* Light Gray */
@@ -78,6 +78,15 @@
   }
 }
 
+@layer utilities {
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+}
+
 @keyframes gradient {
 	0% {
 		background-position: 0% 50%;
@@ -88,4 +97,13 @@
 	100% {
 		background-position: 0% 50%;
 	}
+}
+
+@keyframes text-shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
 }
