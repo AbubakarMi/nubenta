@@ -4,13 +4,13 @@ import { ArrowDown } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <section id="hero" className="relative h-[calc(100dvh-5rem)] min-h-[500px] flex items-center justify-center text-center text-primary-foreground overflow-hidden">
+    <section id="hero" className="relative h-[calc(100dvh-5rem)] min-h-[500px] flex items-center justify-center text-center text-white overflow-hidden">
       <div className="absolute inset-0 -z-10" style={{
         background: 'linear-gradient(-45deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--foreground)), #FFD166)',
         backgroundSize: '400% 400%',
         animation: 'gradient 20s ease infinite',
       }} />
-      <div className="absolute inset-0 bg-primary/60 -z-10" />
+      <div className="absolute inset-0 bg-primary/80 -z-10" />
 
       <div className="container px-4 md:px-6 z-10">
         <div className="flex flex-col items-center space-y-6">
