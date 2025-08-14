@@ -25,7 +25,7 @@ export function CompaniesSection() {
               <Card className="relative bg-card h-full overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 border-border/10">
                 <div className="absolute inset-0 z-0">
                   <Image
-                    src="/tech-background.jpeg"
+                    src="/technology.png"
                     alt="Technology Background"
                     data-ai-hint="abstract technology"
                     fill
