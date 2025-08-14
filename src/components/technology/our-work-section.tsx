@@ -1,7 +1,11 @@
+
+"use client";
+
+import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { ScrollReveal } from '../scroll-reveal';
 import Image from 'next/image';
+import { cn } from '@/lib/utils';
 
 const projects = [
   {
@@ -31,6 +35,8 @@ const projects = [
 ];
 
 export function OurWorkSection() {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
   return (
     <section id="our-work" className="py-20 lg:py-32 bg-secondary/50">
       <div className="container mx-auto px-4 md:px-6">
@@ -45,40 +51,48 @@ export function OurWorkSection() {
         </ScrollReveal>
         
         <ScrollReveal delay={200} className="mt-12">
-          <Carousel 
-            opts={{ 
-              loop: true, 
-              align: "start" 
-            }} 
-            className="w-full max-w-sm md:max-w-xl lg:max-w-4xl xl:max-w-6xl mx-auto"
+          <div 
+            className="flex gap-4 w-full h-[500px] transition-all duration-500 ease-in-out"
+            onMouseLeave={() => setHoveredIndex(null)}
           >
-            <CarouselContent className="-ml-4 py-4">
-              {projects.map((project, index) => (
-                <CarouselItem key={index} className="pl-4 sm:basis-1/2 lg:basis-1/3 group">
-                  <Card className="h-full overflow-hidden transform hover:shadow-2xl transition-all duration-500 bg-card flex flex-col hover:scale-105 hover:z-10">
-                    <div className="overflow-hidden">
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        data-ai-hint={project.hint}
-                        width={600}
-                        height={400}
-                        className="object-cover w-full h-48 group-hover:scale-105 transition-transform duration-300 ease-in-out"
-                      />
-                    </div>
-                    <CardContent className="p-6 flex flex-col flex-grow transition-all duration-300">
-                      <h3 className="text-xl font-bold text-primary">{project.title}</h3>
-                      <p className="mt-2 text-foreground/80 flex-grow line-clamp-3 group-hover:line-clamp-none transition-all duration-300">
-                        {project.description}
-                      </p>
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="hidden sm:flex" />
-            <CarouselNext className="hidden sm:flex" />
-          </Carousel>
+            {projects.map((project, index) => (
+              <div
+                key={index}
+                className={cn(
+                  "relative transition-all duration-700 ease-in-out h-full rounded-2xl overflow-hidden shadow-2xl",
+                  hoveredIndex === null ? 'flex-1' : (hoveredIndex === index ? 'w-[60%]' : 'w-[13.33%]'),
+                )}
+                onMouseEnter={() => setHoveredIndex(index)}
+              >
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  data-ai-hint={project.hint}
+                  width={800}
+                  height={600}
+                  className="object-cover w-full h-full"
+                />
+                <div className={cn(
+                  "absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent transition-all duration-500",
+                   hoveredIndex === index ? 'opacity-100' : 'opacity-0'
+                )} />
+                <div className={cn(
+                  "absolute bottom-0 left-0 right-0 p-8 text-white transition-all duration-500",
+                  hoveredIndex === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                )}>
+                  <h3 className="text-2xl font-bold">{project.title}</h3>
+                  <p className="mt-2 text-white/90">{project.description}</p>
+                </div>
+                 <div className={cn(
+                  "absolute bottom-0 left-0 right-0 p-4 text-white transition-all duration-500",
+                  "writing-mode-vertical-rl transform rotate-180",
+                   hoveredIndex !== null && hoveredIndex !== index ? 'opacity-100' : 'opacity-0'
+                )}>
+                   <h3 className="text-xl font-bold text-center">{project.title}</h3>
+                 </div>
+              </div>
+            ))}
+          </div>
         </ScrollReveal>
       </div>
     </section>
