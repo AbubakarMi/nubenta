@@ -1,3 +1,5 @@
+
+import * as React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ScrollReveal } from '../scroll-reveal';
 import { Briefcase, CloudCog, ShieldCheck } from 'lucide-react';
