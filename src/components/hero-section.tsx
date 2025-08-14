@@ -10,14 +10,14 @@ export function HeroSection() {
         backgroundSize: '400% 400%',
         animation: 'gradient 20s ease infinite',
       }} />
-      <div className="absolute inset-0 bg-primary/80 -z-10" />
+      <div className="absolute inset-0 bg-primary/70 -z-10" />
 
       <div className="container px-4 md:px-6 z-10">
         <div className="flex flex-col items-center space-y-6">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter animate-fade-in-down [text-shadow:0_4px_8px_rgba(0,0,0,0.4)]">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter animate-fade-in-down" style={{ textShadow: '0 4px 15px rgba(0,0,0,0.5)' }}>
             Nubenta Group
           </h1>
-          <p className="max-w-[700px] text-lg md:text-xl text-primary-foreground/90 animate-fade-in-up animation-delay-200 [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
+          <p className="max-w-[700px] text-lg md:text-xl text-primary-foreground animate-fade-in-up animation-delay-200" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.7)' }}>
             Shaping the Future, One Innovation at a Time
           </p>
           <div className="animate-fade-in-up animation-delay-400">
