@@ -5,9 +5,10 @@ import { useState, useRef } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { ScrollReveal } from '../scroll-reveal';
 import Image from 'next/image';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { Dialog, DialogContent, DialogTrigger, DialogClose } from '@/components/ui/dialog';
 
 const projects = [
   {
@@ -48,7 +49,8 @@ export function OurWorkSection() {
 
   const scroll = (direction: 'left' | 'right') => {
     if (containerRef.current) {
-      const scrollAmount = direction === 'left' ? -350 : 350;
+      const cardWidth = containerRef.current.querySelector('div')?.clientWidth ?? 0;
+      const scrollAmount = direction === 'left' ? -cardWidth : cardWidth;
       containerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }
   };
@@ -56,65 +58,87 @@ export function OurWorkSection() {
   return (
     <section id="our-work" className="py-20 lg:py-32 bg-secondary/50">
       <div className="container mx-auto px-4 md:px-6">
-        <ScrollReveal className="text-center">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tighter text-primary">
-            Our Work
-          </h2>
-          <div className="mt-4 w-24 h-1.5 bg-accent mx-auto" />
-          <p className="mt-6 max-w-2xl mx-auto text-center text-lg text-foreground/80">
-            A glimpse into the solutions we've delivered.
-          </p>
-        </ScrollReveal>
-
-        <ScrollReveal delay={200} className="mt-12 relative">
-          <div className="absolute inset-y-0 left-0 hidden md:flex items-center z-10">
-             <Button variant="outline" size="icon" className="bg-background/50 hover:bg-background rounded-full h-10 w-10" onClick={() => scroll('left')}>
-                <ChevronLeft className="h-6 w-6" />
-             </Button>
+        <div className="flex justify-between items-center mb-8">
+          <div className="text-center md:text-left">
+            <ScrollReveal>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tighter text-primary">
+                Our Work
+              </h2>
+              <div className="mt-4 w-24 h-1.5 bg-accent mx-auto md:mx-0" />
+            </ScrollReveal>
           </div>
+          <div className="hidden md:flex items-center gap-2">
+            <Button variant="outline" size="icon" className="rounded-full bg-card/50 hover:bg-card border-border/50" onClick={() => scroll('left')}>
+              <ChevronLeft className="h-6 w-6" />
+            </Button>
+            <Button variant="outline" size="icon" className="rounded-full bg-card/50 hover:bg-card border-border/50" onClick={() => scroll('right')}>
+              <ChevronRight className="h-6 w-6" />
+            </Button>
+          </div>
+        </div>
+        <ScrollReveal delay={200}>
           <div 
             ref={containerRef}
-            className="flex items-stretch gap-4 overflow-x-auto pb-8 snap-x snap-mandatory"
+            className="flex items-stretch gap-6 overflow-x-auto pb-8 snap-x snap-mandatory"
             style={{ scrollbarWidth: 'none', '-ms-overflow-style': 'none' }}
+            onMouseLeave={() => setHoveredIndex(null)}
           >
             {projects.map((project, index) => (
-              <div
-                key={index}
-                className={cn(
-                  "snap-center transition-all duration-500 ease-in-out flex-shrink-0",
-                  hoveredIndex !== null ? (hoveredIndex === index ? 'w-[30rem]' : 'w-48') : 'w-96'
-                )}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-              >
-                <Card className="group bg-card cursor-pointer h-full w-full overflow-hidden flex flex-col">
-                  <div className="relative h-56 w-full flex-shrink-0">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      data-ai-hint={project.hint}
-                      layout="fill"
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
+              <Dialog key={index}>
+                <DialogTrigger asChild>
+                  <div
+                    className={cn(
+                      "snap-start transition-all duration-500 ease-in-out flex-shrink-0 cursor-pointer",
+                      hoveredIndex !== null ? (hoveredIndex === index ? 'w-[28rem]' : 'w-48') : 'w-80'
+                    )}
+                    onMouseEnter={() => setHoveredIndex(index)}
+                  >
+                    <Card className="group bg-card h-full w-full overflow-hidden flex flex-col shadow-lg hover:shadow-2xl transition-shadow">
+                      <div className="relative h-48 w-full flex-shrink-0">
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          data-ai-hint={project.hint}
+                          layout="fill"
+                          className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
+                      </div>
+                      <CardContent className="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                          <h3 className="text-xl font-bold text-primary">{project.title}</h3>
+                          <p className={cn("mt-2 text-foreground/80 transition-all duration-300 ease-in-out",
+                             "overflow-hidden",
+                            hoveredIndex === index ? 'max-h-24 opacity-100' : 'max-h-0 opacity-0'
+                          )}>
+                            {project.description.substring(0, 100)}...
+                          </p>
+                        </div>
+                      </CardContent>
+                    </Card>
                   </div>
-                  <CardContent className="p-6 flex-grow flex flex-col justify-between">
-                    <div>
-                      <h3 className="text-xl font-bold text-primary">{project.title}</h3>
-                      <p className={cn("mt-2 text-foreground/80 transition-all duration-300 ease-in-out overflow-hidden",
-                        hoveredIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                      )}>
-                        {project.description}
-                      </p>
+                </DialogTrigger>
+                <DialogContent className="max-w-4xl p-0">
+                  <div className="grid md:grid-cols-2">
+                    <div className="relative min-h-[300px] md:min-h-0">
+                       <Image
+                        src={project.image}
+                        alt={project.title}
+                        data-ai-hint={project.hint}
+                        layout="fill"
+                        className="object-cover rounded-l-lg"
+                      />
                     </div>
-                  </CardContent>
-                </Card>
-              </div>
+                    <div className="p-8 flex flex-col">
+                      <h2 className="text-2xl font-bold text-primary mb-4">{project.title}</h2>
+                      <p className="text-foreground/80 leading-relaxed flex-grow">{project.description}</p>
+                      <DialogClose asChild>
+                         <Button variant="outline" className="mt-6 self-start">Close</Button>
+                      </DialogClose>
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
             ))}
-          </div>
-           <div className="absolute inset-y-0 right-0 hidden md:flex items-center z-10">
-             <Button variant="outline" size="icon" className="bg-background/50 hover:bg-background rounded-full h-10 w-10" onClick={() => scroll('right')}>
-                <ChevronRight className="h-6 w-6" />
-             </Button>
           </div>
         </ScrollReveal>
       </div>
