@@ -10,7 +10,7 @@ export function CeoSection() {
           <div className="grid md:grid-cols-12 gap-8 items-center">
             <div className="md:col-span-4 lg:col-span-3 flex justify-center">
               <Image
-                src="/ceo-picture.jpeg"
+                src="/images/ceo-picture.jpeg"
                 alt="Photo of the CEO"
                 data-ai-hint="ceo portrait"
                 width={300}
@@ -25,8 +25,9 @@ export function CeoSection() {
               </blockquote>
               <div className="mt-6 flex items-center">
                 <div className="flex-grow">
-                  <p className="font-bold text-primary">Engr Muhammad Idris Abubakar</p>
-                  <p className="text-sm text-muted-foreground">Group Chief Executive Officer</p>
+                  <p className="font-bold text-primary">Engr. Muhammad Idris Abubakar</p>
+                  <p className="text-sm text-muted-foreground">Founder & Group Chief Executive Officer</p>
+                  <p className="text-sm text-muted-foreground">Nubenta Group</p>
                 </div>
                 <div className="ml-4">
                   <Signature />

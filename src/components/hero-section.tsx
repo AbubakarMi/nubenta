@@ -6,7 +6,7 @@ export function HeroSection() {
   return (
     <section id="hero" className="relative h-[calc(100dvh-5rem)] min-h-[500px] flex items-center justify-center text-center text-white overflow-hidden">
       <div className="absolute inset-0 -z-10" style={{
-        background: 'linear-gradient(-45deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--foreground)), #FFD166)',
+        background: 'linear-gradient(-45deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--background)), #FFD166)',
         backgroundSize: '400% 400%',
         animation: 'gradient 20s ease infinite',
       }} />
@@ -17,7 +17,7 @@ export function HeroSection() {
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-shadow-lg animate-fade-in-down">
             Nubenta Group
           </h1>
-          <p className="max-w-[700px] text-lg md:text-xl text-primary-foreground/90 animate-fade-in-up">
+          <p className="max-w-[700px] text-lg md:text-xl text-white/90 animate-fade-in-up">
             Shaping the Future, One Innovation at a Time
           </p>
           <div className="animate-fade-in-up animation-delay-300">
