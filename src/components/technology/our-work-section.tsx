@@ -23,9 +23,9 @@ const projects = [
     hint: 'online shopping'
   },
    {
-    title: 'Healthcare Management System',
-    description: 'A HIPAA-compliant platform for managing patient records and appointments, adopted by 50+ clinics.',
-    image: 'https://placehold.co/600x400.png',
+    title: 'Careflux - Health Management System',
+    description: 'An integrated hospital management solution for staff to access their dashboard and manage patient information.',
+    image: '/careflux-screenshot.png',
     hint: 'medical records'
   }
 ];
