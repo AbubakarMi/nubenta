@@ -85,6 +85,13 @@
   .animation-delay-400 {
     animation-delay: 400ms;
   }
+  .bg-grid-glow {
+    background-image:
+      radial-gradient(circle at 1px 1px, hsl(var(--accent) / 0.5) 1px, transparent 0),
+      radial-gradient(circle at 10px 10px, hsl(var(--accent) / 0.3) 1px, transparent 0);
+    background-size: 2rem 2rem;
+    animation: pulse 3s infinite;
+  }
 }
 
 @keyframes gradient {
@@ -106,4 +113,9 @@
   100% {
     background-position: 200% center;
   }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
 }

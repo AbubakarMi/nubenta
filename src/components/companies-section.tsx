@@ -3,7 +3,7 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ScrollReveal } from './scroll-reveal';
-import { Cpu, ArrowRight } from 'lucide-react';
+import { Cpu, ArrowRight, Lightbulb } from 'lucide-react';
 import Link from 'next/link';
 import { useRef, useState } from 'react';
 
@@ -37,13 +37,13 @@ export function CompaniesSection() {
         </ScrollReveal>
         
         <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3 justify-center">
-          <ScrollReveal delay={200}>
+          <ScrollReveal delay={0}>
             <Link href="/technology" className="group block h-full">
               <div
                 ref={cardRef}
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
-                className="relative bg-card h-full overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 border-border/10 p-px hover:-translate-y-2 hover:scale-105"
+                className="relative bg-card h-full overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 border-border/10 p-px hover:-translate-y-2 hover:scale-[1.02]"
               >
                 <div 
                   className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -71,14 +71,24 @@ export function CompaniesSection() {
             </Link>
           </ScrollReveal>
           
-          <ScrollReveal delay={400}>
-            <div className="relative flex items-center justify-center h-full rounded-xl bg-card/50 backdrop-blur-sm p-8 overflow-hidden border border-border/10">
-               <div className="absolute inset-0 -z-10 opacity-20" style={{
-                backgroundImage: 'repeating-conic-gradient(from 45deg, hsl(var(--primary) / 0.1), hsl(var(--primary) / 0.1) 25%, transparent 25%, transparent 50%)',
-                backgroundSize: '2rem 2rem',
-                animation: 'move-bg 20s linear infinite',
-              }} />
-              <p className="text-muted-foreground text-center text-lg font-medium">More innovative companies coming soon...</p>
+          <ScrollReveal delay={200}>
+            <div className="relative flex flex-col items-center justify-center h-full rounded-xl bg-primary/5 p-8 overflow-hidden border border-border/10 group">
+               <div 
+                className="absolute inset-0 -z-10 opacity-50" 
+                style={{
+                  backgroundImage: 'linear-gradient(hsl(var(--border)) 1px, transparent 1px), linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px)',
+                  backgroundSize: '2rem 2rem'
+                }}
+              />
+              <div className="absolute inset-0 -z-10 bg-grid-glow opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative text-center">
+                <div className="relative inline-block">
+                  <Lightbulb className="h-12 w-12 text-accent animate-pulse" />
+                   <div className="absolute -inset-2 bg-accent/20 rounded-full blur-xl animate-pulse animation-delay-400" />
+                </div>
+                <p className="mt-6 text-muted-foreground text-lg font-medium">Future Innovations</p>
+                <p className="text-sm text-muted-foreground/70">Under Construction</p>
+              </div>
             </div>
           </ScrollReveal>
         </div>
