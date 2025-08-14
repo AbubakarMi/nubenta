@@ -43,7 +43,7 @@ export function CompaniesSection() {
                 ref={cardRef}
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
-                className="relative bg-card h-full overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 border-border/10 p-px"
+                className="relative bg-card h-full overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 border-border/10 p-px hover:-translate-y-2 hover:scale-105"
               >
                 <div 
                   className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -51,7 +51,7 @@ export function CompaniesSection() {
                     background: `radial-gradient(350px circle at ${mousePosition.x}px ${mousePosition.y}px, hsl(var(--accent) / 0.15), transparent)`,
                   }}
                 />
-                <div className="relative z-10 flex flex-col h-full p-6 text-white bg-card rounded-[inherit]">
+                <div className="relative z-10 flex flex-col h-full p-6 bg-card rounded-[inherit]">
                   <div className="flex-grow">
                     <div className="bg-accent/20 border border-accent/50 text-accent p-3 rounded-lg inline-block mb-4">
                       <Cpu className="h-8 w-8" />
