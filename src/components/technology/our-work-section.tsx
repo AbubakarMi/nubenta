@@ -57,7 +57,7 @@ export function OurWorkSection() {
                         data-ai-hint={project.hint}
                         width={600}
                         height={400}
-                        className="object-cover w-full h-auto group-hover:scale-105 transition-transform duration-300"
+                        className="object-contain w-full h-auto group-hover:scale-105 transition-transform duration-300"
                       />
                       <CardContent className="p-6">
                         <h3 className="text-xl font-bold text-primary">{project.title}</h3>
