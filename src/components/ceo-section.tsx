@@ -10,7 +10,7 @@ export function CeoSection() {
           <div className="grid md:grid-cols-12 gap-8 items-center">
             <div className="md:col-span-4 lg:col-span-3 flex justify-center">
               <Image
-                src="/images/ceo-picture.jpeg"
+                src="/ceo-picture.jpeg"
                 alt="Photo of the CEO"
                 data-ai-hint="ceo portrait"
                 width={300}
