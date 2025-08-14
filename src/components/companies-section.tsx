@@ -18,7 +18,7 @@ export function CompaniesSection() {
         
         <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3 justify-center">
           <ScrollReveal delay={200}>
-            <Card className="group transform hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 overflow-hidden">
+            <Card className="group transform hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 overflow-hidden bg-card">
               <CardHeader>
                 <div className="flex items-center gap-4">
                   <div className="bg-primary text-primary-foreground p-3 rounded-lg">
