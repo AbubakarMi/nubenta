@@ -25,7 +25,7 @@ export function CeoSection() {
               </blockquote>
               <div className="mt-6 flex items-center">
                 <div className="flex-grow">
-                  <p className="font-bold text-primary">Engr Muhammad Muhammad Idris Abubakar</p>
+                  <p className="font-bold text-primary">Engr Muhammad Idris Abubakar</p>
                   <p className="text-sm text-muted-foreground">Group Chief Executive Officer</p>
                 </div>
                 <div className="ml-4">

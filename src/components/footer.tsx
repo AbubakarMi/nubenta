@@ -24,11 +24,11 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4" />
-                <span>+234 123 456 7890</span>
+                <span>+2347042526071</span>
               </li>
               <li className="flex items-center gap-2">
                 <MapPin className="h-4 w-4" />
-                <span>123 Innovation Drive, Lagos, Nigeria</span>
+                <span>No 23 Emir's palara road kano , nigeria</span>
               </li>
             </ul>
           </div>
