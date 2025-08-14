@@ -8,7 +8,7 @@ const projects = [
     title: 'Enterprise ERP Solution',
     description: 'A comprehensive ERP system that streamlined operations for a major logistics company, improving efficiency by 40%.',
     image: 'https://placehold.co/600x400.png',
-    hint: 'computer code'
+    hint: 'enterprise resource planning'
   },
   {
     title: 'Fintech Mobile App',
@@ -57,7 +57,7 @@ export function OurWorkSection() {
                         data-ai-hint={project.hint}
                         width={600}
                         height={400}
-                        className="object-cover w-full h-48 group-hover:scale-105 transition-transform duration-300"
+                        className="object-cover w-full h-auto group-hover:scale-105 transition-transform duration-300"
                       />
                       <CardContent className="p-6">
                         <h3 className="text-xl font-bold text-primary">{project.title}</h3>
