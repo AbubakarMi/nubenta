@@ -10,7 +10,7 @@ export function CeoSection() {
           <div className="grid md:grid-cols-12 gap-8 items-center">
             <div className="md:col-span-4 lg:col-span-3 flex justify-center">
               <Image
-                src="https://storage.googleapis.com/maker-studio-5f2b8.appspot.com/user-7T23Y7Jvj3T24aFvEbrrId9Yc2n1/projects/yD3f2B3eA2c4b5e6/images/4a86f183-5c8e-4b67-8495-9509f626a575"
+                src="/ceo-picture.jpeg"
                 alt="Photo of the CEO"
                 data-ai-hint="ceo portrait"
                 width={300}
