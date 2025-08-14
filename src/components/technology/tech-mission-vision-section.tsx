@@ -37,7 +37,7 @@ export function TechMissionVisionSection() {
             <div className="relative aspect-square w-full max-w-sm mx-auto flex items-center justify-center">
               <Cog className="absolute h-full w-full text-primary/5 animate-spin-slow" />
               <Image
-                src="https://placehold.co/400x400.png"
+                src="/coding.jpeg"
                 alt="Abstract technological design"
                 data-ai-hint="abstract technology"
                 width={400}
