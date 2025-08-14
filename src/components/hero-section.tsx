@@ -22,10 +22,10 @@ export function HeroSection() {
             Shaping the Future, One Innovation at a Time
           </p>
           <div className="animate-fade-in-up animation-delay-400">
-            <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-8 py-6 text-base font-semibold shadow-lg transition-transform hover:scale-105">
+            <Button asChild size="lg" className="bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white rounded-full px-8 py-6 text-base font-semibold shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-accent/40 hover:border-white/30 group">
               <Link href="#companies">
                 Explore Our Companies
-                <ArrowDown className="ml-2 h-5 w-5" />
+                <ArrowDown className="ml-2 h-5 w-5 transition-transform duration-500 group-hover:translate-y-1 animate-bounce" style={{ animationDuration: '1.5s', animationDelay: '1s' }} />
               </Link>
             </Button>
           </div>
