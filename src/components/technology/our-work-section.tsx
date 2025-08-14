@@ -7,8 +7,8 @@ const projects = [
   {
     title: 'Enterprise ERP Solution',
     description: 'A comprehensive ERP system that streamlined operations for a major logistics company, improving efficiency by 40%.',
-    image: 'https://placehold.co/600x400.png',
-    hint: 'corporate analytics'
+    image: '/computer-coding.jpg',
+    hint: 'computer code'
   },
   {
     title: 'Fintech Mobile App',
