@@ -28,7 +28,7 @@ export function CompaniesSection() {
                     src="/tech-background.jpeg"
                     alt="Technology Background"
                     data-ai-hint="abstract technology"
-                    layout="fill"
+                    fill
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
