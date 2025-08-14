@@ -116,6 +116,14 @@ export default {
             'background-position': '-200% center',
           },
         },
+        'spin-slow': {
+          from: {
+            transform: 'rotate(0deg)',
+          },
+          to: {
+            transform: 'rotate(360deg)',
+          },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -123,8 +131,18 @@ export default {
         'fade-in-down': 'fade-in-down 0.8s ease-out forwards',
         'fade-in-up': 'fade-in-up 0.8s ease-out forwards',
         'text-shimmer': 'text-shimmer 4s linear infinite',
+        'spin-slow': 'spin-slow 30s linear infinite',
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [
+    require('tailwindcss-animate'),
+    function({ addUtilities }: { addUtilities: any }) {
+      addUtilities({
+        '.writing-mode-vertical-rl': {
+          'writing-mode': 'vertical-rl',
+        },
+      })
+    }
+  ],
 } satisfies Config;
