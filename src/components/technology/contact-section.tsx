@@ -97,7 +97,7 @@ export function ContactSection() {
                 </div>
                 <div>
                     <h3 className="font-bold text-lg text-primary">Address</h3>
-                    <p className="text-foreground/80">No 23 Emir&apos;s palara road kano, nigeria</p>
+                    <p className="text-foreground/80">No 20 Emir's Palace Road Kano, Nigeria</p>
                 </div>
              </div>
           </ScrollReveal>

@@ -28,7 +28,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <MapPin className="h-4 w-4" />
-                <span>No 23 Emir's palara road kano , nigeria</span>
+                <span>No 20 Emir's Palace Road Kano, Nigeria</span>
               </li>
             </ul>
           </div>
