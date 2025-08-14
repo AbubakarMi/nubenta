@@ -45,31 +45,39 @@ export function OurWorkSection() {
         </ScrollReveal>
         
         <ScrollReveal delay={200} className="mt-12">
-          <Carousel opts={{ loop: true, align: "start" }} className="w-full">
+          <Carousel 
+            opts={{ 
+              loop: true, 
+              align: "start" 
+            }} 
+            className="w-full max-w-sm md:max-w-xl lg:max-w-4xl xl:max-w-6xl mx-auto"
+          >
             <CarouselContent className="-ml-4">
               {projects.map((project, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pl-4">
-                  <div className="p-1">
-                    <Card className="overflow-hidden group transform hover:shadow-2xl transition-all duration-300 bg-card">
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        data-ai-hint={project.hint}
-                        width={600}
-                        height={400}
-                        className="object-contain w-full h-auto group-hover:scale-105 transition-transform duration-300"
-                      />
-                      <CardContent className="p-6">
+                <CarouselItem key={index} className="pl-4 sm:basis-1/2 lg:basis-1/3">
+                  <div className="h-full">
+                    <Card className="h-full overflow-hidden group transform hover:shadow-2xl transition-all duration-300 bg-card flex flex-col">
+                      <div className="overflow-hidden">
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          data-ai-hint={project.hint}
+                          width={600}
+                          height={400}
+                          className="object-contain w-full h-auto group-hover:scale-105 transition-transform duration-300 ease-in-out"
+                        />
+                      </div>
+                      <CardContent className="p-6 flex flex-col flex-grow">
                         <h3 className="text-xl font-bold text-primary">{project.title}</h3>
-                        <p className="mt-2 text-foreground/80">{project.description}</p>
+                        <p className="mt-2 text-foreground/80 flex-grow">{project.description}</p>
                       </CardContent>
                     </Card>
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="ml-14" />
-            <CarouselNext className="mr-14" />
+            <CarouselPrevious className="hidden sm:flex" />
+            <CarouselNext className="hidden sm:flex" />
           </Carousel>
         </ScrollReveal>
       </div>
