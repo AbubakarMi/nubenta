@@ -1,11 +1,25 @@
 
 "use client";
 
-import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { ScrollReveal } from '../scroll-reveal';
 import Image from 'next/image';
-import { cn } from '@/lib/utils';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+
 
 const projects = [
   {
@@ -35,8 +49,6 @@ const projects = [
 ];
 
 export function OurWorkSection() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
   return (
     <section id="our-work" className="py-20 lg:py-32 bg-secondary/50">
       <div className="container mx-auto px-4 md:px-6">
@@ -49,50 +61,62 @@ export function OurWorkSection() {
             A glimpse into the solutions we've delivered.
           </p>
         </ScrollReveal>
-        
+
         <ScrollReveal delay={200} className="mt-12">
-          <div 
-            className="flex gap-4 w-full h-[500px] transition-all duration-500 ease-in-out"
-            onMouseLeave={() => setHoveredIndex(null)}
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
           >
-            {projects.map((project, index) => (
-              <div
-                key={index}
-                className={cn(
-                  "relative transition-all duration-700 ease-in-out h-full rounded-2xl overflow-hidden shadow-2xl",
-                  hoveredIndex === null ? 'flex-1' : (hoveredIndex === index ? 'w-[60%]' : 'w-[13.33%]'),
-                )}
-                onMouseEnter={() => setHoveredIndex(index)}
-              >
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  data-ai-hint={project.hint}
-                  width={800}
-                  height={600}
-                  className="object-cover w-full h-full"
-                />
-                <div className={cn(
-                  "absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent transition-all duration-500",
-                   hoveredIndex === index ? 'opacity-100' : 'opacity-0'
-                )} />
-                <div className={cn(
-                  "absolute bottom-0 left-0 right-0 p-8 text-white transition-all duration-500",
-                  hoveredIndex === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                )}>
-                  <h3 className="text-2xl font-bold">{project.title}</h3>
-                  <p className="mt-2 text-white/90">{project.description}</p>
-                </div>
-                 <div className={cn(
-                  "absolute bottom-0 left-0 right-0 p-4 text-white transition-all duration-500",
-                  "writing-mode-vertical-rl transform rotate-180",
-                   hoveredIndex !== null && hoveredIndex !== index ? 'opacity-100' : 'opacity-0'
-                )}>
-                   <h3 className="text-xl font-bold text-center">{project.title}</h3>
-                 </div>
-              </div>
-            ))}
-          </div>
+            <CarouselContent>
+              {projects.map((project, index) => (
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Card className="group transform hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 overflow-hidden bg-card cursor-pointer h-full">
+                        <div className="relative h-56">
+                          <Image
+                            src={project.image}
+                            alt={project.title}
+                            data-ai-hint={project.hint}
+                            layout="fill"
+                            className="object-cover"
+                          />
+                        </div>
+                        <CardContent className="p-6">
+                          <h3 className="text-xl font-bold text-primary">{project.title}</h3>
+                          <p className="mt-2 text-foreground/80 line-clamp-3">
+                            {project.description}
+                          </p>
+                        </CardContent>
+                      </Card>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[600px] bg-card">
+                      <DialogHeader>
+                        <div className="relative h-64 mb-4 rounded-lg overflow-hidden">
+                           <Image
+                            src={project.image}
+                            alt={project.title}
+                            data-ai-hint={project.hint}
+                            layout="fill"
+                            className="object-contain"
+                          />
+                        </div>
+                        <DialogTitle className="text-2xl font-bold text-primary">{project.title}</DialogTitle>
+                        <DialogDescription className="text-base text-foreground/80 pt-2">
+                          {project.description}
+                        </DialogDescription>
+                      </DialogHeader>
+                    </DialogContent>
+                  </Dialog>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden md:flex" />
+            <CarouselNext className="hidden md:flex" />
+          </Carousel>
         </ScrollReveal>
       </div>
     </section>
