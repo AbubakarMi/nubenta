@@ -37,8 +37,8 @@ const TiltCard = ({ children, className }: { children: React.ReactNode, classNam
     const x = e.clientX - left - width / 2;
     const y = e.clientY - top - height / 2;
 
-    const rotateX = (y / height) * -30; // Tilt intensity
-    const rotateY = (x / width) * 30;
+    const rotateX = (y / height) * -20; // Tilt intensity
+    const rotateY = (x / width) * 20;
 
     cardRef.current.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
   };
