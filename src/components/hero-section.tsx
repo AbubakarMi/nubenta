@@ -13,8 +13,10 @@ export function HeroSection() {
 
       <div className="container px-4 md:px-6 z-10">
         <div className="flex flex-col items-center space-y-6">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter animate-fade-in-down" style={{ textShadow: '0 4px 15px rgba(0,0,0,0.5)' }}>
-            Nubenta Group
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter animate-fade-in-down">
+            <span className="animate-text-shimmer bg-clip-text text-transparent bg-[linear-gradient(110deg,theme(colors.white),45%,theme(colors.amber.200),55%,theme(colors.white))] bg-[length:200%_100%]" style={{ textShadow: '0 4px 15px rgba(0,0,0,0.5)' }}>
+              Nubenta Group
+            </span>
           </h1>
           <p className="max-w-[700px] text-lg md:text-xl text-white animate-fade-in-up animation-delay-200" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.7)' }}>
             Shaping the Future, One Innovation at a Time
