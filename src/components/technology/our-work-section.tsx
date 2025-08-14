@@ -2,7 +2,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { ScrollReveal } from '../scroll-reveal';
 import Image from 'next/image';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 
 const projects = [
   {
@@ -53,53 +52,27 @@ export function OurWorkSection() {
             }} 
             className="w-full max-w-sm md:max-w-xl lg:max-w-4xl xl:max-w-6xl mx-auto"
           >
-            <CarouselContent className="-ml-4">
+            <CarouselContent className="-ml-4 py-4">
               {projects.map((project, index) => (
-                <CarouselItem key={index} className="pl-4 sm:basis-1/2 lg:basis-1/3">
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <div className="h-full">
-                        <Card className="h-full overflow-hidden group transform hover:shadow-2xl transition-all duration-300 bg-card flex flex-col cursor-pointer">
-                          <div className="overflow-hidden">
-                            <Image
-                              src={project.image}
-                              alt={project.title}
-                              data-ai-hint={project.hint}
-                              width={600}
-                              height={400}
-                              className="object-cover w-full h-48 group-hover:scale-105 transition-transform duration-300 ease-in-out"
-                            />
-                          </div>
-                          <CardContent className="p-6 flex flex-col flex-grow">
-                            <h3 className="text-xl font-bold text-primary">{project.title}</h3>
-                            <p className="mt-2 text-foreground/80 flex-grow line-clamp-3">{project.description}</p>
-                          </CardContent>
-                        </Card>
-                      </div>
-                    </DialogTrigger>
-                    <DialogContent className="sm:max-w-3xl bg-card">
-                      <DialogHeader>
-                        <DialogTitle className="text-3xl font-bold text-primary">{project.title}</DialogTitle>
-                      </DialogHeader>
-                      <div className="grid md:grid-cols-2 gap-8 items-start mt-4">
-                        <div>
-                          <Image
-                            src={project.image}
-                            alt={project.title}
-                            data-ai-hint={project.hint}
-                            width={800}
-                            height={600}
-                            className="object-contain w-full h-auto rounded-lg shadow-lg"
-                          />
-                        </div>
-                        <div>
-                          <DialogDescription className="text-base text-foreground/80 leading-relaxed">
-                            {project.description}
-                          </DialogDescription>
-                        </div>
-                      </div>
-                    </DialogContent>
-                  </Dialog>
+                <CarouselItem key={index} className="pl-4 sm:basis-1/2 lg:basis-1/3 group">
+                  <Card className="h-full overflow-hidden transform hover:shadow-2xl transition-all duration-500 bg-card flex flex-col hover:scale-105 hover:z-10">
+                    <div className="overflow-hidden">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        data-ai-hint={project.hint}
+                        width={600}
+                        height={400}
+                        className="object-cover w-full h-48 group-hover:scale-105 transition-transform duration-300 ease-in-out"
+                      />
+                    </div>
+                    <CardContent className="p-6 flex flex-col flex-grow transition-all duration-300">
+                      <h3 className="text-xl font-bold text-primary">{project.title}</h3>
+                      <p className="mt-2 text-foreground/80 flex-grow line-clamp-3 group-hover:line-clamp-none transition-all duration-300">
+                        {project.description}
+                      </p>
+                    </CardContent>
+                  </Card>
                 </CarouselItem>
               ))}
             </CarouselContent>
