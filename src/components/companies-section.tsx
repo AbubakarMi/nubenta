@@ -70,7 +70,6 @@ export function CompaniesSection() {
               </div>
             </Link>
           </ScrollReveal>
-          
           <ScrollReveal delay={200}>
             <div className="relative flex flex-col items-center justify-center h-full rounded-xl bg-primary/5 p-8 overflow-hidden border border-border/10 group">
                <div 
