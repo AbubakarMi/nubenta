@@ -7,6 +7,7 @@ export function Footer() {
       <div className="container mx-auto py-12 px-4 md:px-6">
         <div className="grid gap-8 md:grid-cols-3">
           <div className="space-y-4">
+            {/* Footer */}
             <Link href="/" className="flex items-center gap-2 text-2xl font-bold">
               <Zap className="h-7 w-7 text-accent" />
               <span>Nubenta Group</span>
