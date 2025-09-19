@@ -3,8 +3,10 @@ import { HeroSection } from '@/components/hero-section';
 import { AboutSection } from '@/components/about-section';
 import { MissionVisionSection } from '@/components/mission-vision-section';
 import { CompaniesSection } from '@/components/companies-section';
+import { TestimonialsSection } from '@/components/testimonials-section';
 import { CeoSection } from '@/components/ceo-section';
 import { Footer } from '@/components/footer';
+import { FloatingActions } from '@/components/floating-actions';
 
 export default function Home() {
   return (
@@ -15,9 +17,11 @@ export default function Home() {
         <AboutSection />
         <MissionVisionSection />
         <CompaniesSection />
+        <TestimonialsSection />
         <CeoSection />
       </main>
       <Footer />
+      <FloatingActions />
     </div>
   );
 }

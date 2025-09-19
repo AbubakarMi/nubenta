@@ -36,33 +36,41 @@
   }
 
   .dark {
-    --background: 0 0% 7%; /* #121212 */
+    --background: 0 0% 3%; /* Ultra dark */
     --foreground: 210 17% 98%; /* Light Gray */
-    
-    --card: 240 4% 10%;
+
+    --card: 240 4% 8%;
     --card-foreground: 210 17% 98%;
-    
-    --popover: 233 37% 13%;
+
+    --popover: 233 37% 10%;
     --popover-foreground: 210 17% 98%;
-    
+
     --primary: 210 17% 98%; /* Light Gray for primary text on dark bg */
     --primary-foreground: 0 0% 7%;
-    
-    --secondary: 233 37% 17%; /* Dark Blue */
+
+    --secondary: 233 37% 15%; /* Dark Blue */
     --secondary-foreground: 210 17% 98%; /* Light Gray */
-    
-    --muted: 233 37% 17%;
+
+    --muted: 233 37% 15%;
     --muted-foreground: 0 0% 63.9%;
-    
-    --accent: 171 100% 37%; /* #00BFA6 */
+
+    --accent: 171 100% 40%; /* Enhanced teal */
     --accent-foreground: 0 0% 7%;
-    
+
+    --accent-secondary: 45 100% 60%; /* Golden yellow */
+    --accent-tertiary: 270 100% 70%; /* Purple */
+    --accent-quaternary: 330 100% 70%; /* Pink */
+
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    
+
     --border: 233 37% 20%;
     --input: 233 37% 20%;
-    --ring: 171 100% 37%;
+    --ring: 171 100% 40%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(171 100% 40%), hsl(45 100% 60%));
+    --gradient-secondary: linear-gradient(135deg, hsl(270 100% 70%), hsl(330 100% 70%));
+    --gradient-tertiary: linear-gradient(135deg, hsl(171 100% 40%), hsl(270 100% 70%), hsl(45 100% 60%));
   }
 }
 

@@ -124,6 +124,56 @@ export default {
             transform: 'rotate(360deg)',
           },
         },
+        'float': {
+          '0%, 100%': {
+            transform: 'translateY(0px)',
+          },
+          '50%': {
+            transform: 'translateY(-10px)',
+          },
+        },
+        'glow': {
+          '0%, 100%': {
+            'box-shadow': '0 0 20px rgb(0 191 166 / 0.3)',
+          },
+          '50%': {
+            'box-shadow': '0 0 40px rgb(0 191 166 / 0.6), 0 0 60px rgb(255 209 102 / 0.3)',
+          },
+        },
+        'gradient-x': {
+          '0%, 100%': {
+            'background-position': '0% 50%',
+          },
+          '50%': {
+            'background-position': '100% 50%',
+          },
+        },
+        'scale-pulse': {
+          '0%, 100%': {
+            transform: 'scale(1)',
+          },
+          '50%': {
+            transform: 'scale(1.05)',
+          },
+        },
+        'wiggle': {
+          '0%, 100%': {
+            transform: 'rotate(-3deg)',
+          },
+          '50%': {
+            transform: 'rotate(3deg)',
+          },
+        },
+        'bounce-slow': {
+          '0%, 100%': {
+            transform: 'translateY(-5%)',
+            'animation-timing-function': 'cubic-bezier(0.8, 0, 1, 1)',
+          },
+          '50%': {
+            transform: 'translateY(0)',
+            'animation-timing-function': 'cubic-bezier(0, 0, 0.2, 1)',
+          },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -132,6 +182,12 @@ export default {
         'fade-in-up': 'fade-in-up 0.8s ease-out forwards',
         'text-shimmer': 'text-shimmer 4s linear infinite',
         'spin-slow': 'spin-slow 30s linear infinite',
+        'float': 'float 3s ease-in-out infinite',
+        'glow': 'glow 2s ease-in-out infinite alternate',
+        'gradient-x': 'gradient-x 3s ease infinite',
+        'scale-pulse': 'scale-pulse 2s ease-in-out infinite',
+        'wiggle': 'wiggle 1s ease-in-out infinite',
+        'bounce-slow': 'bounce-slow 2s infinite',
       },
     },
   },
