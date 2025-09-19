@@ -6,211 +6,302 @@ import { Quote, Target, Users, Globe, Lightbulb } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const stats = [
-  { icon: Target, value: "50+", label: "Projects Delivered", color: "text-accent" },
-  { icon: Users, value: "1000+", label: "Team Members", color: "text-amber-400" },
-  { icon: Globe, value: "15+", label: "Countries", color: "text-blue-400" },
-  { icon: Lightbulb, value: "100+", label: "Innovations", color: "text-green-400" }
+  { icon: Target, value: "50+", label: "Projects Delivered", gradient: "from-[hsl(45_85%_75%)] to-[hsl(160_85%_45%)]" },
+  { icon: Users, value: "1000+", label: "Team Members", gradient: "from-[hsl(160_85%_45%)] to-[hsl(220_85%_55%)]" },
+  { icon: Globe, value: "15+", label: "Countries", gradient: "from-[hsl(220_85%_55%)] to-[hsl(15_85%_65%)]" },
+  { icon: Lightbulb, value: "100+", label: "Innovations", gradient: "from-[hsl(15_85%_65%)] to-[hsl(45_85%_75%)]" }
 ];
 
 export function AboutSection() {
   return (
     <section id="about" className="py-20 lg:py-32 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/5 to-transparent" />
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-amber-400/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+      {/* Sophisticated Background */}
+      <div className="absolute inset-0">
+        {/* Elegant Gradient Foundation */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(220_25%_6%)] via-[hsl(220_20%_8%)] to-[hsl(220_25%_6%)]" />
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        {/* Sophisticated Moving Gradients */}
+        <motion.div
+          className="absolute inset-0 opacity-15"
+          style={{
+            background: `
+              radial-gradient(circle at 20% 30%, hsl(45 85% 75% / 0.08) 0%, transparent 50%),
+              radial-gradient(circle at 80% 70%, hsl(160 85% 45% / 0.06) 0%, transparent 50%),
+              radial-gradient(circle at 50% 20%, hsl(220 85% 55% / 0.04) 0%, transparent 40%)
+            `
+          }}
+          animate={{
+            backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"]
+          }}
+          transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
+        />
+
+        {/* Elegant Floating Orbs */}
+        <motion.div
+          className="absolute top-1/3 left-1/4 w-80 h-80 bg-gradient-to-r from-[hsl(45_85%_75%_/_0.08)] to-[hsl(160_85%_45%_/_0.06)] rounded-full blur-3xl"
+          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-gradient-to-r from-[hsl(220_85%_55%_/_0.06)] to-[hsl(15_85%_65%_/_0.08)] rounded-full blur-3xl"
+          animate={{ scale: [1.2, 1, 1.2], opacity: [0.6, 0.3, 0.6] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        />
+      </div>
+
+      <div className="container mx-auto px-6 md:px-8 relative z-10 max-w-7xl">
         <div className="max-w-6xl mx-auto">
-          {/* Section Header */}
-          <ScrollReveal className="text-center mb-16">
+          {/* Sophisticated Header */}
+          <ScrollReveal className="text-center mb-20">
             <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative inline-block mb-6"
+              initial={{ scale: 0, rotate: -45 }}
+              animate={{ scale: 1, rotate: 0 }}
+              transition={{ duration: 1, delay: 0.2, type: "spring", stiffness: 100 }}
+              className="relative inline-block mb-8"
             >
-              <Quote className="h-16 w-16 text-accent/20 mx-auto" />
+              <motion.div
+                className="absolute inset-0 -m-8 bg-gradient-to-r from-[hsl(45_85%_75%_/_0.15)] via-[hsl(160_85%_45%_/_0.1)] to-[hsl(220_85%_55%_/_0.15)] rounded-full blur-xl"
+                animate={{
+                  scale: [1, 1.3, 1],
+                  opacity: [0.3, 0.6, 0.3]
+                }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <Quote className="h-16 w-16 text-[hsl(45_85%_75%)] mx-auto relative z-10" />
               <motion.div
                 animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 rounded-full border-2 border-accent/30 border-dashed"
+                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-0 rounded-full border border-[hsl(160_85%_45%_/_0.3)] border-dashed"
               />
             </motion.div>
 
             <motion.h2
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-6"
+              transition={{ duration: 1, delay: 0.5 }}
+              className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-8"
             >
-              <span className="bg-gradient-to-r from-accent via-amber-400 to-accent bg-clip-text text-transparent">
+              <motion.span
+                className="bg-gradient-to-r from-[hsl(45_85%_75%)] via-[hsl(210_25%_98%)] to-[hsl(160_85%_45%)] bg-clip-text text-transparent"
+                animate={{
+                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
+                }}
+                transition={{ duration: 6, repeat: Infinity }}
+                style={{ backgroundSize: "200% 200%" }}
+              >
                 About
-              </span>{" "}
-              <span className="text-white">Nubenta</span>
+              </motion.span>{" "}
+              <motion.span
+                className="bg-gradient-to-r from-[hsl(210_25%_98%)] to-[hsl(160_85%_45%)] bg-clip-text text-transparent"
+                animate={{
+                  backgroundPosition: ["100% 50%", "0% 50%", "100% 50%"]
+                }}
+                transition={{ duration: 8, repeat: Infinity }}
+                style={{ backgroundSize: "200% 200%" }}
+              >
+                Nubenta
+              </motion.span>
             </motion.h2>
 
             <motion.div
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
-              transition={{ duration: 1, delay: 0.6 }}
-              className="w-32 h-1 bg-gradient-to-r from-accent to-amber-400 mx-auto rounded-full"
+              transition={{ duration: 1.5, delay: 0.8 }}
+              className="w-40 h-1 bg-gradient-to-r from-[hsl(45_85%_75%)] to-[hsl(160_85%_45%)] mx-auto rounded-full"
             />
           </ScrollReveal>
 
-          {/* Main Content */}
-          <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
-            {/* Text Content */}
-            <ScrollReveal direction="left" delay={0.2}>
-              <div className="space-y-6">
+          {/* Premium Content Grid */}
+          <div className="grid lg:grid-cols-2 gap-20 items-center mb-24">
+            {/* Elegant Text Content */}
+            <ScrollReveal direction="left" delay={0.3}>
+              <div className="space-y-8">
                 <motion.p
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.8 }}
-                  className="text-xl md:text-2xl text-gray-300 leading-relaxed font-light"
+                  transition={{ duration: 1, delay: 0.9 }}
+                  className="text-xl md:text-2xl leading-relaxed font-light"
+                  style={{ color: "hsl(210 25% 90%)" }}
                 >
-                  <span className="text-accent font-semibold">Nubenta Group</span> is a{" "}
+                  <motion.span
+                    className="bg-gradient-to-r from-[hsl(45_85%_75%)] to-[hsl(160_85%_45%)] bg-clip-text text-transparent font-semibold"
+                    animate={{
+                      backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
+                    }}
+                    transition={{ duration: 4, repeat: Infinity }}
+                    style={{ backgroundSize: "200% 200%" }}
+                  >
+                    Nubenta Group
+                  </motion.span>{" "}
+                  is a{" "}
                   <span className="relative">
-                    <span className="text-amber-400 font-medium">dynamic and forward-thinking</span>
                     <motion.span
-                      className="absolute -bottom-1 left-0 w-full h-0.5 bg-amber-400/50"
+                      className="bg-gradient-to-r from-[hsl(160_85%_45%)] to-[hsl(15_85%_65%)] bg-clip-text text-transparent font-medium"
+                      animate={{
+                        backgroundPosition: ["100% 50%", "0% 50%", "100% 50%"]
+                      }}
+                      transition={{ duration: 5, repeat: Infinity }}
+                      style={{ backgroundSize: "200% 200%" }}
+                    >
+                      visionary conglomerate
+                    </motion.span>
+                    <motion.span
+                      className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-[hsl(160_85%_45%)] to-[hsl(15_85%_65%)]"
                       initial={{ scaleX: 0 }}
                       animate={{ scaleX: 1 }}
-                      transition={{ duration: 1, delay: 1.2 }}
+                      transition={{ duration: 1.5, delay: 1.4 }}
                     />
                   </span>{" "}
-                  conglomerate dedicated to fostering innovation and driving progress across Africa.
+                  pioneering innovation and excellence across Africa.
                 </motion.p>
 
                 <motion.p
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 1 }}
-                  className="text-lg text-gray-400 leading-relaxed"
+                  transition={{ duration: 1, delay: 1.1 }}
+                  className="text-lg leading-relaxed"
+                  style={{ color: "hsl(210 25% 75%)" }}
                 >
-                  With a diverse portfolio of companies, we are committed to creating sustainable value and making a positive impact on businesses and communities. Our strategic investments and commitment to excellence position us at the forefront of shaping a brighter, more prosperous future.
+                  Through our diverse portfolio and strategic investments, we create transformative value for businesses and communities. Our unwavering commitment to excellence positions us as architects of a prosperous, sustainable future.
                 </motion.p>
 
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 1.4 }}
-                  className="flex items-center gap-4 pt-4"
+                  transition={{ duration: 0.8, delay: 1.6 }}
+                  className="flex items-center gap-6 pt-6"
                 >
-                  <div className="flex -space-x-2">
+                  <div className="flex -space-x-3">
                     {[1, 2, 3, 4].map((i) => (
-                      <div
+                      <motion.div
                         key={i}
-                        className="w-10 h-10 rounded-full bg-gradient-to-r from-accent to-amber-400 border-2 border-black flex items-center justify-center text-black font-bold text-sm"
+                        className="w-12 h-12 rounded-full bg-gradient-to-r from-[hsl(45_85%_75%)] to-[hsl(160_85%_45%)] border-2 border-[hsl(220_25%_6%)] flex items-center justify-center text-[hsl(220_25%_6%)] font-bold text-sm shadow-lg"
+                        whileHover={{ scale: 1.1, y: -2 }}
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ duration: 0.4, delay: 1.8 + i * 0.1 }}
                       >
                         {i}
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
-                  <span className="text-sm text-gray-400">Trusted by leading organizations</span>
+                  <span className="text-sm font-medium" style={{ color: "hsl(210 25% 80%)" }}>
+                    Trusted by global leaders
+                  </span>
                 </motion.div>
               </div>
             </ScrollReveal>
 
-            {/* Visual Element */}
-            <ScrollReveal direction="right" delay={0.4}>
+            {/* Sophisticated Visual Element */}
+            <ScrollReveal direction="right" delay={0.5}>
               <div className="relative">
                 <motion.div
                   animate={{
-                    y: [0, -10, 0],
-                    rotate: [0, 1, -1, 0]
+                    y: [0, -15, 0],
+                    rotate: [0, 2, -2, 0]
                   }}
                   transition={{
-                    duration: 6,
+                    duration: 8,
                     repeat: Infinity,
                     ease: "easeInOut"
                   }}
                   className="relative"
                 >
-                  <div className="w-full h-80 bg-gradient-to-br from-accent/20 to-amber-400/20 rounded-3xl backdrop-blur-sm border border-white/10 overflow-hidden">
+                  <div className="w-full h-96 bg-gradient-to-br from-white/8 to-white/2 rounded-3xl backdrop-blur-xl border border-white/10 overflow-hidden shadow-2xl">
                     <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-transparent" />
 
-                    {/* Floating Elements */}
-                    {[...Array(6)].map((_, i) => (
+                    {/* Elegant Floating Elements */}
+                    {[...Array(8)].map((_, i) => (
                       <motion.div
                         key={i}
-                        className="absolute w-4 h-4 bg-accent rounded-full opacity-60"
+                        className="absolute w-3 h-3 rounded-full bg-gradient-to-r from-[hsl(45_85%_75%)] to-[hsl(160_85%_45%)] opacity-60"
                         style={{
-                          left: `${20 + (i * 15)}%`,
-                          top: `${30 + (i % 2) * 20}%`,
+                          left: `${15 + (i * 12)}%`,
+                          top: `${25 + (i % 3) * 20}%`,
                         }}
                         animate={{
-                          y: [0, -20, 0],
-                          opacity: [0.3, 0.8, 0.3],
-                          scale: [1, 1.2, 1]
+                          y: [0, -30, 0],
+                          opacity: [0.4, 0.9, 0.4],
+                          scale: [0.8, 1.2, 0.8]
                         }}
                         transition={{
-                          duration: 3,
+                          duration: 4 + i * 0.3,
                           repeat: Infinity,
-                          delay: i * 0.5,
+                          delay: i * 0.4,
                           ease: "easeInOut"
                         }}
                       />
                     ))}
 
-                    {/* Center Icon */}
+                    {/* Premium Center Icon */}
                     <div className="absolute inset-0 flex items-center justify-center">
                       <motion.div
                         animate={{ rotate: 360 }}
-                        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
                         className="relative"
                       >
-                        <Lightbulb className="h-20 w-20 text-accent" />
+                        <Lightbulb className="h-24 w-24 text-[hsl(45_85%_75%)]" />
                         <motion.div
-                          animate={{ scale: [1, 1.2, 1] }}
-                          transition={{ duration: 2, repeat: Infinity }}
-                          className="absolute inset-0 bg-accent/20 rounded-full blur-xl"
+                          animate={{ scale: [1, 1.3, 1] }}
+                          transition={{ duration: 3, repeat: Infinity }}
+                          className="absolute inset-0 bg-gradient-to-r from-[hsl(45_85%_75%_/_0.2)] to-[hsl(160_85%_45%_/_0.2)] rounded-full blur-2xl"
                         />
                       </motion.div>
                     </div>
                   </div>
                 </motion.div>
 
-                {/* Decorative Elements */}
+                {/* Sophisticated Decorative Elements */}
                 <motion.div
-                  className="absolute -top-6 -right-6 w-12 h-12 bg-amber-400/20 rounded-full blur-xl"
-                  animate={{ scale: [1, 1.5, 1] }}
-                  transition={{ duration: 4, repeat: Infinity }}
+                  className="absolute -top-8 -right-8 w-16 h-16 bg-gradient-to-r from-[hsl(160_85%_45%_/_0.15)] to-[hsl(220_85%_55%_/_0.15)] rounded-full blur-xl"
+                  animate={{ scale: [1, 1.6, 1] }}
+                  transition={{ duration: 5, repeat: Infinity }}
                 />
                 <motion.div
-                  className="absolute -bottom-6 -left-6 w-16 h-16 bg-accent/20 rounded-full blur-xl"
-                  animate={{ scale: [1.5, 1, 1.5] }}
-                  transition={{ duration: 3, repeat: Infinity }}
+                  className="absolute -bottom-8 -left-8 w-20 h-20 bg-gradient-to-r from-[hsl(45_85%_75%_/_0.15)] to-[hsl(15_85%_65%_/_0.15)] rounded-full blur-xl"
+                  animate={{ scale: [1.6, 1, 1.6] }}
+                  transition={{ duration: 4, repeat: Infinity }}
                 />
               </div>
             </ScrollReveal>
           </div>
 
-          {/* Stats Section */}
-          <ScrollReveal delay={0.6}>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {/* Premium Stats Section */}
+          <ScrollReveal delay={0.8}>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {stats.map((stat, index) => (
-                <AnimatedCard
+                <motion.div
                   key={index}
-                  delay={index * 0.1}
-                  className="text-center p-6"
+                  initial={{ opacity: 0, y: 40, scale: 0.8 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 1.2 + index * 0.15 }}
+                  whileHover={{
+                    scale: 1.05,
+                    y: -8
+                  }}
+                  className="text-center p-8 rounded-3xl bg-gradient-to-br from-white/8 to-white/2 backdrop-blur-xl border border-white/10 group cursor-pointer"
                 >
                   <motion.div
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    className="mb-4"
+                    whileHover={{ scale: 1.15, rotate: 8 }}
+                    className="mb-6"
                   >
-                    <stat.icon className={`h-8 w-8 mx-auto ${stat.color}`} />
+                    <stat.icon className={`h-10 w-10 mx-auto bg-gradient-to-r ${stat.gradient} text-transparent`} style={{ WebkitBackgroundClip: "text", backgroundClip: "text" }} />
                   </motion.div>
+
                   <motion.div
-                    className="text-3xl font-bold text-white mb-2"
+                    className={`text-4xl md:text-5xl font-black mb-3 bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent`}
                     initial={{ opacity: 0, scale: 0 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
+                    transition={{ duration: 0.6, delay: 1.4 + index * 0.1 }}
+                    whileHover={{ scale: 1.1 }}
                   >
                     {stat.value}
                   </motion.div>
-                  <div className="text-sm text-gray-400">{stat.label}</div>
-                </AnimatedCard>
+
+                  <div className="text-sm font-medium group-hover:text-white transition-colors" style={{ color: "hsl(210 25% 75%)" }}>
+                    {stat.label}
+                  </div>
+                </motion.div>
               ))}
             </div>
           </ScrollReveal>
