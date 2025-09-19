@@ -163,6 +163,8 @@ const getMotionPath = (path: string, baseX: number, baseY: number, time: number)
 };
 
 export function TestimonialsSection() {
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+
   return (
     <section
       id="testimonials"
@@ -294,7 +296,10 @@ export function TestimonialsSection() {
                 opacity: 0,
                 scale: 0.8
               }}
-              animate={{
+              animate={hoveredCard === testimonial.id ? {
+                scale: 1.1,
+                zIndex: 50
+              } : {
                 x: [
                   -400,
                   typeof window !== 'undefined' ? window.innerWidth + 400 : 1600,
@@ -303,17 +308,16 @@ export function TestimonialsSection() {
                 opacity: [0, 1, 1, 1, 0],
                 scale: [0.8, 1, 1, 1, 0.8]
               }}
-              transition={{
-                duration: 15 + index * 2,
+              transition={hoveredCard === testimonial.id ? {
+                duration: 0.3
+              } : {
+                duration: 25 + index * 3,
                 repeat: Infinity,
                 ease: "linear",
-                delay: index * 3
+                delay: index * 5
               }}
-              whileHover={{
-                scale: 1.1,
-                zIndex: 50,
-                transition: { duration: 0.3 }
-              }}
+              onHoverStart={() => setHoveredCard(testimonial.id)}
+              onHoverEnd={() => setHoveredCard(null)}
             >
               {/* Compact Elegant Card */}
               <div className="relative h-full bg-gradient-to-br from-white/15 to-white/8 backdrop-blur-xl rounded-xl border border-white/25 p-6 overflow-hidden shadow-2xl">

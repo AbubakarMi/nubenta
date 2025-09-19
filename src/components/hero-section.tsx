@@ -237,15 +237,15 @@ export function HeroSection() {
                 </motion.span>
               </motion.h1>
 
-              {/* Enhanced Core Purpose */}
+              {/* Sophisticated Tagline */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.5, duration: 1 }}
-                className="mt-12 max-w-4xl mx-auto"
+                className="mt-8 max-w-3xl mx-auto"
               >
                 <motion.p
-                  className="text-xl md:text-2xl lg:text-3xl font-light leading-relaxed mb-8"
+                  className="text-xl md:text-2xl lg:text-3xl font-light leading-relaxed"
                   style={{ color: "hsl(210 25% 90%)" }}
                 >
                   <motion.span
@@ -270,72 +270,6 @@ export function HeroSection() {
                     Defining Tomorrow
                   </motion.span>
                 </motion.p>
-
-                {/* Core Purpose Statement */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 2, duration: 1 }}
-                  className="relative"
-                >
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-[hsl(45_85%_75%_/_0.1)] via-[hsl(160_85%_45%_/_0.1)] to-[hsl(220_85%_55%_/_0.1)] rounded-2xl blur-xl"
-                    animate={{
-                      scale: [1, 1.05, 1],
-                      opacity: [0.3, 0.6, 0.3]
-                    }}
-                    transition={{ duration: 3, repeat: Infinity }}
-                  />
-
-                  <div className="relative bg-gradient-to-br from-white/8 to-white/3 backdrop-blur-xl rounded-2xl border border-white/20 p-8">
-                    <motion.h3
-                      className="text-lg md:text-xl lg:text-2xl font-semibold mb-4 text-center"
-                      style={{ color: "hsl(45 85% 75%)" }}
-                      animate={{
-                        textShadow: [
-                          "0 0 20px hsl(45 85% 75% / 0.5)",
-                          "0 0 40px hsl(45 85% 75% / 0.8)",
-                          "0 0 20px hsl(45 85% 75% / 0.5)"
-                        ]
-                      }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    >
-                      Our Core Purpose
-                    </motion.h3>
-
-                    <motion.p
-                      className="text-base md:text-lg leading-relaxed text-center"
-                      style={{ color: "hsl(210 25% 85%)" }}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 2.5, duration: 1 }}
-                    >
-                      We exist to{" "}
-                      <motion.span
-                        className="bg-gradient-to-r from-[hsl(160_85%_45%)] to-[hsl(220_85%_55%)] bg-clip-text text-transparent font-semibold"
-                        animate={{
-                          backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
-                        }}
-                        transition={{ duration: 3, repeat: Infinity }}
-                        style={{ backgroundSize: "200% 200%" }}
-                      >
-                        transform African innovation
-                      </motion.span>
-                      {" "}through strategic investments, cutting-edge technology, and{" "}
-                      <motion.span
-                        className="bg-gradient-to-r from-[hsl(15_85%_65%)] to-[hsl(45_85%_75%)] bg-clip-text text-transparent font-semibold"
-                        animate={{
-                          backgroundPosition: ["100% 50%", "0% 50%", "100% 50%"]
-                        }}
-                        transition={{ duration: 4, repeat: Infinity }}
-                        style={{ backgroundSize: "200% 200%" }}
-                      >
-                        sustainable growth solutions
-                      </motion.span>
-                      {" "}that create lasting value for businesses and communities across the continent.
-                    </motion.p>
-                  </div>
-                </motion.div>
               </motion.div>
             </motion.div>
           </div>

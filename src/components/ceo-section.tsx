@@ -8,39 +8,104 @@ import { motion } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
 
 const achievements = [
-  { icon: Award, label: "Industry Awards", value: "15+" },
-  { icon: Target, label: "Projects Delivered", value: "200+" },
-  { icon: Users, label: "Team Members", value: "500+" },
-  { icon: Lightbulb, label: "Innovations", value: "50+" }
+  { icon: Award, label: "Industry Awards", value: "15+", gradient: "from-[hsl(45_85%_75%)] to-[hsl(160_85%_45%)]" },
+  { icon: Target, label: "Projects Delivered", value: "200+", gradient: "from-[hsl(160_85%_45%)] to-[hsl(220_85%_55%)]" },
+  { icon: Users, label: "Team Members", value: "500+", gradient: "from-[hsl(220_85%_55%)] to-[hsl(15_85%_65%)]" },
+  { icon: Lightbulb, label: "Innovations", value: "50+", gradient: "from-[hsl(15_85%_65%)] to-[hsl(45_85%_75%)]" }
 ];
 
 export function CeoSection() {
   return (
     <section id="ceo" className="py-20 lg:py-32 relative overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 via-transparent to-blue-900/10" />
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-amber-400/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+      {/* Sophisticated Background */}
+      <div className="absolute inset-0">
+        {/* Elegant Gradient Foundation */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(220_25%_6%)] via-[hsl(220_20%_8%)] to-[hsl(220_25%_6%)]" />
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        {/* Subtle Moving Gradients */}
+        <motion.div
+          className="absolute inset-0 opacity-12"
+          style={{
+            background: `
+              radial-gradient(circle at 25% 30%, hsl(45 85% 75% / 0.08) 0%, transparent 50%),
+              radial-gradient(circle at 75% 70%, hsl(160 85% 45% / 0.06) 0%, transparent 50%),
+              radial-gradient(circle at 50% 50%, hsl(220 85% 55% / 0.04) 0%, transparent 40%)
+            `
+          }}
+          animate={{
+            backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"]
+          }}
+          transition={{ duration: 35, repeat: Infinity, ease: "easeInOut" }}
+        />
+
+        {/* Elegant Floating Orbs */}
+        <motion.div
+          className="absolute top-1/3 left-1/4 w-80 h-80 bg-gradient-to-r from-[hsl(45_85%_75%_/_0.06)] to-[hsl(160_85%_45%_/_0.04)] rounded-full blur-3xl"
+          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-gradient-to-r from-[hsl(220_85%_55%_/_0.04)] to-[hsl(15_85%_65%_/_0.06)] rounded-full blur-3xl"
+          animate={{ scale: [1.2, 1, 1.2], opacity: [0.5, 0.3, 0.5] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        />
+      </div>
+
+      <div className="container mx-auto px-6 md:px-8 relative z-10 max-w-7xl">
         {/* Section Header */}
-        <ScrollReveal className="text-center mb-16">
+        <ScrollReveal className="text-center mb-20">
+          <motion.div
+            className="relative inline-block mb-8"
+            initial={{ scale: 0, rotate: -45 }}
+            animate={{ scale: 1, rotate: 0 }}
+            transition={{ duration: 1, delay: 0.2, type: "spring", stiffness: 100 }}
+          >
+            <motion.div
+              className="absolute inset-0 -m-8 bg-gradient-to-r from-[hsl(45_85%_75%_/_0.15)] via-[hsl(160_85%_45%_/_0.1)] to-[hsl(220_85%_55%_/_0.15)] rounded-full blur-xl"
+              animate={{
+                scale: [1, 1.3, 1],
+                opacity: [0.3, 0.6, 0.3]
+              }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <Award className="h-16 w-16 text-[hsl(45_85%_75%)] mx-auto relative z-10" />
+          </motion.div>
+
           <motion.h2
-            className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-6"
-            initial={{ opacity: 0, y: 30 }}
+            className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-8"
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1, delay: 0.5 }}
           >
             Meet Our{" "}
-            <span className="bg-gradient-to-r from-accent via-purple-500 to-amber-400 bg-clip-text text-transparent">
-              Visionary Leader
-            </span>
+            <motion.span
+              className="bg-gradient-to-r from-[hsl(45_85%_75%)] via-[hsl(210_25%_98%)] to-[hsl(160_85%_45%)] bg-clip-text text-transparent"
+              animate={{
+                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
+              }}
+              transition={{ duration: 6, repeat: Infinity }}
+              style={{ backgroundSize: "200% 200%" }}
+            >
+              Visionary
+            </motion.span>
+            <br />
+            <motion.span
+              className="bg-gradient-to-r from-[hsl(160_85%_45%)] to-[hsl(15_85%_65%)] bg-clip-text text-transparent"
+              animate={{
+                backgroundPosition: ["100% 50%", "0% 50%", "100% 50%"]
+              }}
+              transition={{ duration: 8, repeat: Infinity }}
+              style={{ backgroundSize: "200% 200%" }}
+            >
+              Leader
+            </motion.span>
           </motion.h2>
+
           <motion.div
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
-            transition={{ duration: 1, delay: 0.4 }}
-            className="w-32 h-1 bg-gradient-to-r from-accent to-amber-400 mx-auto rounded-full"
+            transition={{ duration: 1.5, delay: 0.8 }}
+            className="w-40 h-1 bg-gradient-to-r from-[hsl(45_85%_75%)] to-[hsl(160_85%_45%)] mx-auto rounded-full"
           />
         </ScrollReveal>
 
@@ -61,13 +126,13 @@ export function CeoSection() {
               className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/20 shadow-2xl"
             >
               {/* Animated Background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-purple-500/10 to-amber-400/10 opacity-50" />
+              <div className="absolute inset-0 bg-gradient-to-br from-[hsl(45_85%_75%_/_0.08)] via-[hsl(160_85%_45%_/_0.06)] to-[hsl(220_85%_55%_/_0.08)] opacity-60" />
 
               {/* Floating Elements */}
               {[...Array(8)].map((_, i) => (
                 <motion.div
                   key={i}
-                  className="absolute w-2 h-2 bg-accent/30 rounded-full"
+                  className="absolute w-2 h-2 bg-[hsl(45_85%_75%_/_0.4)] rounded-full"
                   style={{
                     left: `${10 + (i * 12)}%`,
                     top: `${20 + (i % 2) * 60}%`,
@@ -94,7 +159,7 @@ export function CeoSection() {
                     transition={{ duration: 1, delay: 0.3 }}
                     className="relative h-[400px] lg:h-full min-h-[500px]"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-purple-500/20 rounded-2xl m-4" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-[hsl(45_85%_75%_/_0.15)] to-[hsl(160_85%_45%_/_0.12)] rounded-2xl m-4" />
                     <Image
                       src="/ceo-picture.JPG"
                       alt="Photo of the CEO, Engr. Muhammad Idris Abubakar"
@@ -105,7 +170,7 @@ export function CeoSection() {
 
                     {/* Floating CEO Badge */}
                     <motion.div
-                      className="absolute top-8 right-8 bg-gradient-to-r from-accent to-amber-400 text-black px-4 py-2 rounded-full text-sm font-bold shadow-lg"
+                      className="absolute top-8 right-8 bg-gradient-to-r from-[hsl(45_85%_75%)] to-[hsl(160_85%_45%)] text-[hsl(220_25%_6%)] px-4 py-2 rounded-full text-sm font-bold shadow-xl"
                       animate={{ y: [0, -5, 0] }}
                       transition={{ duration: 3, repeat: Infinity }}
                     >
@@ -127,9 +192,9 @@ export function CeoSection() {
                       <motion.div
                         animate={{ rotate: 360 }}
                         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                        className="absolute inset-0 rounded-full border-2 border-accent/30 border-dashed w-16 h-16"
+                        className="absolute inset-0 rounded-full border-2 border-[hsl(45_85%_75%_/_0.4)] border-dashed w-16 h-16"
                       />
-                      <Quote className="h-12 w-12 text-accent relative z-10 p-2" />
+                      <Quote className="h-12 w-12 text-[hsl(45_85%_75%)] relative z-10 p-2" />
                     </motion.div>
 
                     {/* Quote Text */}
@@ -139,16 +204,16 @@ export function CeoSection() {
                       transition={{ duration: 1, delay: 0.7 }}
                       className="text-xl lg:text-2xl xl:text-3xl font-light text-white leading-relaxed mb-8"
                     >
-                      <span className="text-accent font-semibold">"</span>
+                      <span className="text-[hsl(45_85%_75%)] font-semibold">"</span>
                       At Nubenta, we believe in the{" "}
-                      <span className="text-accent font-semibold">power of visionary ideas</span> and{" "}
-                      <span className="text-amber-400 font-semibold">relentless execution</span>.
+                      <span className="text-[hsl(45_85%_75%)] font-semibold">power of visionary ideas</span> and{" "}
+                      <span className="text-[hsl(160_85%_45%)] font-semibold">relentless execution</span>.
                       Our journey is one of passion, purpose, and a commitment to creating lasting value.
                       We are not just building companies; we are{" "}
-                      <span className="bg-gradient-to-r from-accent to-amber-400 bg-clip-text text-transparent font-semibold">
+                      <span className="bg-gradient-to-r from-[hsl(45_85%_75%)] to-[hsl(160_85%_45%)] bg-clip-text text-transparent font-semibold">
                         building the future of Africa
                       </span>.
-                      <span className="text-accent font-semibold">"</span>
+                      <span className="text-[hsl(45_85%_75%)] font-semibold">"</span>
                     </motion.blockquote>
 
                     {/* CEO Info */}
@@ -162,7 +227,7 @@ export function CeoSection() {
                         <h3 className="font-black text-2xl text-white">
                           Engr. Muhammad Idris Abubakar
                         </h3>
-                        <p className="text-accent font-semibold text-lg">
+                        <p className="text-[hsl(45_85%_75%)] font-semibold text-lg">
                           Founder & Group Chief Executive Officer
                         </p>
                         <p className="text-gray-400">Nubenta Group</p>
@@ -175,7 +240,7 @@ export function CeoSection() {
                               initial={{ opacity: 0, scale: 0 }}
                               whileInView={{ opacity: 1, scale: 1 }}
                               transition={{ duration: 0.5, delay: 1.1 + index * 0.1 }}
-                              className="px-3 py-1 bg-gradient-to-r from-accent/20 to-amber-400/20 rounded-full text-sm text-accent border border-accent/30"
+                              className="px-3 py-1 bg-gradient-to-r from-[hsl(45_85%_75%_/_0.15)] to-[hsl(160_85%_45%_/_0.15)] rounded-full text-sm text-[hsl(45_85%_75%)] border border-[hsl(45_85%_75%_/_0.3)]"
                             >
                               {tag}
                             </motion.span>
@@ -208,29 +273,56 @@ export function CeoSection() {
                 initial={{ opacity: 0, y: 30, scale: 0.9 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ scale: 1.05, y: -5 }}
-                className="text-center p-6 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 group"
+                whileHover={{ scale: 1.05, y: -8 }}
+                className="relative text-center p-8 rounded-3xl bg-gradient-to-br from-white/12 to-white/6 backdrop-blur-xl border border-white/20 group overflow-hidden"
               >
+                {/* Sophisticated Glow */}
                 <motion.div
-                  whileHover={{ rotate: 360, scale: 1.2 }}
-                  transition={{ duration: 0.6 }}
-                  className="mx-auto mb-4 w-12 h-12 rounded-full bg-gradient-to-r from-accent to-amber-400 flex items-center justify-center"
+                  className={`absolute inset-0 bg-gradient-to-br ${achievement.gradient} rounded-3xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
+                  animate={{
+                    scale: [1, 1.05, 1],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+
+                <motion.div
+                  whileHover={{ rotate: 360, scale: 1.15 }}
+                  transition={{ duration: 0.8, type: "spring" }}
+                  className={`mx-auto mb-6 w-16 h-16 rounded-2xl bg-gradient-to-br ${achievement.gradient} flex items-center justify-center shadow-xl relative z-10`}
                 >
-                  <achievement.icon className="h-6 w-6 text-black" />
+                  <achievement.icon className="h-8 w-8 text-[hsl(220_25%_6%)]" />
                 </motion.div>
 
                 <motion.div
-                  className="text-3xl font-bold text-white mb-2"
+                  className="text-4xl font-black text-white mb-3"
                   initial={{ opacity: 0, scale: 0 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+                  transition={{ duration: 0.8, delay: 0.2 + index * 0.1, type: "spring" }}
                 >
                   {achievement.value}
                 </motion.div>
 
-                <div className="text-gray-400 group-hover:text-white transition-colors">
+                <div className="text-gray-300 group-hover:text-white transition-colors font-medium text-sm">
                   {achievement.label}
                 </div>
+
+                {/* Subtle floating particles */}
+                <motion.div
+                  className="absolute top-4 right-4 w-2 h-2 bg-white/20 rounded-full"
+                  animate={{
+                    y: [0, -8, 0],
+                    opacity: [0.3, 0.8, 0.3]
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    delay: index * 0.5
+                  }}
+                />
               </motion.div>
             ))}
           </div>

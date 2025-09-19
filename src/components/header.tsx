@@ -10,8 +10,10 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { href: "#about", label: "About" },
+  { href: "#core-purpose", label: "Core Purpose" },
   { href: "#mission-vision", label: "Mission & Vision" },
   { href: "#companies", label: "Our Companies" },
+  { href: "#testimonials", label: "Testimonials" },
   { href: "#ceo", label: "CEO" },
 ];
 
