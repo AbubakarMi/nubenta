@@ -80,7 +80,7 @@ export function OurWorkSection() {
           <div 
             ref={containerRef}
             className="flex items-stretch gap-6 overflow-x-auto pb-8 snap-x snap-mandatory"
-            style={{ scrollbarWidth: 'none', '-ms-overflow-style': 'none' }}
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' } as React.CSSProperties}
             onMouseLeave={() => setHoveredIndex(null)}
           >
             {projects.map((project, index) => (
