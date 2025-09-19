@@ -297,8 +297,15 @@ export function TestimonialsSection() {
                 scale: 0.8
               }}
               animate={hoveredCard === testimonial.id ? {
-                scale: 1.1,
-                zIndex: 50
+                scale: 1.2,
+                zIndex: 50,
+                y: 50 + index * 80 - 30,
+                x: typeof window !== 'undefined' ? (window.innerWidth / 2) - 175 : 600,
+                opacity: 1
+              } : hoveredCard !== null ? {
+                // When another card is hovered, keep this one visible but dimmed
+                opacity: 0.3,
+                scale: 0.9
               } : {
                 x: [
                   -400,
@@ -309,12 +316,17 @@ export function TestimonialsSection() {
                 scale: [0.8, 1, 1, 1, 0.8]
               }}
               transition={hoveredCard === testimonial.id ? {
+                duration: 0.8,
+                type: "spring",
+                stiffness: 120,
+                damping: 20
+              } : hoveredCard !== null ? {
                 duration: 0.3
               } : {
-                duration: 25 + index * 3,
+                duration: 60 + index * 8,
                 repeat: Infinity,
                 ease: "linear",
-                delay: index * 5
+                delay: index * 10
               }}
               onHoverStart={() => setHoveredCard(testimonial.id)}
               onHoverEnd={() => setHoveredCard(null)}
@@ -374,15 +386,17 @@ export function TestimonialsSection() {
                     ))}
                   </div>
 
-                  {/* Compact Quote */}
+                  {/* Dynamic Quote Content */}
                   <div className="flex-grow mb-4">
                     <blockquote
-                      className="text-sm leading-relaxed font-light italic"
+                      className="text-sm leading-relaxed font-light italic transition-all duration-300"
                       style={{ color: "hsl(210 25% 95%)" }}
                     >
-                      "{testimonial.content.length > 120
-                        ? testimonial.content.substring(0, 120) + '...'
-                        : testimonial.content}"
+                      "{hoveredCard === testimonial.id
+                        ? testimonial.content
+                        : testimonial.content.length > 120
+                          ? testimonial.content.substring(0, 120) + '...'
+                          : testimonial.content}"
                     </blockquote>
                   </div>
 

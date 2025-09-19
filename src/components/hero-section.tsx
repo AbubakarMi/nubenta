@@ -249,7 +249,7 @@ export function HeroSection() {
                   style={{ color: "hsl(210 25% 90%)" }}
                 >
                   <motion.span
-                    className="bg-gradient-to-r from-[hsl(210_25%_98%)] to-[hsl(45_85%_75%)] bg-clip-text text-transparent font-medium"
+                    className="bg-gradient-to-r from-[hsl(210_25%_98%)] to-[hsl(45_85%_75%)] bg-clip-text text-transparent font-semibold"
                     animate={{
                       backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
                     }}
@@ -258,9 +258,18 @@ export function HeroSection() {
                   >
                     Pioneering Excellence
                   </motion.span>
-                  {" · "}
                   <motion.span
-                    className="bg-gradient-to-r from-[hsl(160_85%_45%)] to-[hsl(15_85%_65%)] bg-clip-text text-transparent font-medium"
+                    className="mx-4 text-[hsl(45_85%_75%)]"
+                    animate={{
+                      scale: [1, 1.2, 1],
+                      opacity: [0.7, 1, 0.7]
+                    }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    ✦
+                  </motion.span>
+                  <motion.span
+                    className="bg-gradient-to-r from-[hsl(160_85%_45%)] to-[hsl(15_85%_65%)] bg-clip-text text-transparent font-semibold"
                     animate={{
                       backgroundPosition: ["100% 50%", "0% 50%", "100% 50%"]
                     }}
@@ -333,38 +342,108 @@ export function HeroSection() {
             ))}
           </motion.div>
 
-          {/* Sophisticated CTA */}
+          {/* World-Class CTA Section */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 3.2, duration: 0.8 }}
-            className="relative"
+            className="relative group"
           >
+            {/* Multi-layered Sophisticated Glow */}
             <motion.div
-              className="absolute -inset-6 bg-gradient-to-r from-[hsl(45_85%_75%_/_0.3)] via-[hsl(160_85%_45%_/_0.2)] to-[hsl(220_85%_55%_/_0.3)] rounded-full blur-xl"
+              className="absolute -inset-8 bg-gradient-to-r from-[hsl(45_85%_75%_/_0.4)] via-[hsl(160_85%_45%_/_0.3)] to-[hsl(220_85%_55%_/_0.4)] rounded-full blur-2xl"
               animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.3, 0.5, 0.3]
+                scale: [1, 1.3, 1],
+                opacity: [0.3, 0.6, 0.3],
+                rotate: [0, 180, 360]
               }}
-              transition={{ duration: 4, repeat: Infinity }}
+              transition={{ duration: 8, repeat: Infinity }}
             />
 
-            <Button
-              asChild
-              size="lg"
-              className="relative bg-gradient-to-r from-[hsl(45_85%_75%)] to-[hsl(160_85%_45%)] hover:from-[hsl(45_85%_70%)] hover:to-[hsl(160_85%_40%)] text-[hsl(220_25%_6%)] font-bold rounded-full px-10 py-6 text-lg shadow-2xl transition-all duration-300 hover:scale-105 border-0 group"
+            <motion.div
+              className="absolute -inset-4 bg-gradient-to-r from-[hsl(160_85%_45%_/_0.3)] via-[hsl(220_85%_55%_/_0.2)] to-[hsl(45_85%_75%_/_0.3)] rounded-full blur-xl"
+              animate={{
+                scale: [1.2, 1, 1.2],
+                opacity: [0.4, 0.2, 0.4],
+                rotate: [360, 180, 0]
+              }}
+              transition={{ duration: 6, repeat: Infinity }}
+            />
+
+            {/* Premium Badge */}
+            <motion.div
+              className="absolute -top-4 -right-4 bg-gradient-to-r from-[hsl(15_85%_65%)] to-[hsl(220_85%_55%)] text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg border border-white/20"
+              animate={{
+                y: [0, -3, 0],
+                scale: [1, 1.05, 1]
+              }}
+              transition={{ duration: 3, repeat: Infinity }}
             >
-              <Link href="#companies" className="flex items-center gap-3">
-                <Crown className="h-5 w-5" />
-                Discover Excellence
-                <motion.div
-                  animate={{ y: [0, 4, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  <ArrowDown className="h-5 w-5" />
-                </motion.div>
-              </Link>
-            </Button>
+              ✨ Premium
+            </motion.div>
+
+            <motion.div
+              whileHover={{ scale: 1.05, y: -4 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <Button
+                asChild
+                size="lg"
+                className="relative bg-gradient-to-r from-[hsl(45_85%_75%)] to-[hsl(160_85%_45%)] hover:from-[hsl(45_85%_70%)] hover:to-[hsl(160_85%_40%)] text-[hsl(220_25%_6%)] font-bold rounded-full px-12 py-8 text-xl shadow-3xl transition-all duration-500 border-2 border-white/20 hover:border-white/40 group overflow-hidden"
+              >
+                <Link href="#companies" className="flex items-center gap-4 relative z-10">
+                  <motion.div
+                    animate={{ rotate: [0, 15, 0] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    <Crown className="h-6 w-6" />
+                  </motion.div>
+
+                  <span className="relative">
+                    Discover Excellence
+                    {/* Shimmer effect */}
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                      initial={{ x: "-100%" }}
+                      animate={{ x: "100%" }}
+                      transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                    />
+                  </span>
+
+                  <motion.div
+                    animate={{ y: [0, 4, 0] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    <ArrowDown className="h-6 w-6" />
+                  </motion.div>
+                </Link>
+              </Button>
+            </motion.div>
+
+            {/* Floating Elements Around CTA */}
+            {[...Array(3)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute"
+                style={{
+                  left: `${20 + i * 30}%`,
+                  top: `${i % 2 === 0 ? '-20px' : '120px'}`,
+                }}
+                animate={{
+                  y: [0, -10, 0],
+                  opacity: [0.4, 0.8, 0.4],
+                  scale: [1, 1.2, 1]
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  delay: i * 0.7
+                }}
+              >
+                <div className={`w-2 h-2 rounded-full bg-gradient-to-r from-[hsl(45_85%_75%)] to-[hsl(160_85%_45%)] blur-sm`} />
+              </motion.div>
+            ))}
           </motion.div>
 
           {/* Refined Scroll Indicator */}
