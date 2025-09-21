@@ -43,6 +43,10 @@ export function TechMissionVisionSection() {
                 width={400}
                 height={400}
                 className="rounded-full object-cover shadow-2xl border-4 border-card p-2"
+                loading="lazy"
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R+OWYg+Y7Apdy4Bx1xCaXTIACLkjq8LNQM1Rh0JNj8EzL6gBDnANCgHBTwvEP8AQcAaykxKGD3bCjABmJrH5ZwGsYCKu5k47t1TkCpWwOhFktquY0SB5BNRcTFc/nGq8Y7OJIkQYo3AjHzZi4Y5sM1IVN5vRBQ=="
+                priority={false}
               />
             </div>
           </ScrollReveal>

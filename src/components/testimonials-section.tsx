@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useTransform, useAnimation } from 'framer-motion';
 import { useState, useRef, useEffect } from 'react';
 import { Quote, Star, Heart, Award, Sparkles } from 'lucide-react';
 import { ScrollReveal } from './scroll-reveal';
@@ -162,6 +162,277 @@ const getMotionPath = (path: string, baseX: number, baseY: number, time: number)
   }
 };
 
+function TestimonialCard({ testimonial, index }: { testimonial: any, index: number }) {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const isEven = index % 2 === 0;
+  const row = Math.floor(index / 2); // 2 cards per row
+  const yPosition = 80 + row * 160; // Better vertical spacing
+
+  const getScreenDimensions = () => {
+    if (typeof window === 'undefined') return { width: 1600, height: 900 };
+    return { width: window.innerWidth, height: window.innerHeight };
+  };
+
+  const createElegantMovement = () => {
+    const { width: screenWidth } = getScreenDimensions();
+    const cardWidth = 400;
+
+    // Different paths for even/odd cards
+    const startX = isEven ? -cardWidth - 100 : screenWidth + 100;
+    const endX = isEven ? screenWidth + 100 : -cardWidth - 100;
+
+    return {
+      x: startX,
+      y: yPosition,
+      opacity: 0,
+      scale: 0.9,
+      animate: {
+        x: endX,
+        opacity: [0, 1, 1, 1, 0],
+        scale: [0.9, 1, 1, 1, 0.9],
+        transition: {
+          duration: 30, // Slower, less CPU intensive
+          repeat: Infinity,
+          ease: "linear", // Simpler easing
+          repeatDelay: 5 // Longer pause
+        }
+      }
+    };
+  };
+
+  const handleHover = () => {
+    setIsHovered(true);
+    setIsPaused(true);
+  };
+
+  const handleHoverEnd = () => {
+    setIsHovered(false);
+    setIsPaused(false);
+  };
+
+  const movement = createElegantMovement();
+
+  // Stagger the start of each card
+  const startDelay = index * 6; // 6 seconds between starts
+
+  return (
+    <motion.div
+      className="absolute group cursor-pointer"
+      style={{
+        width: "400px",
+        height: "300px",
+        transformStyle: "preserve-3d"
+      }}
+      initial={movement}
+      animate={isPaused ? {
+        // Perfect centering when hovered
+        x: () => {
+          const { width } = getScreenDimensions();
+          return (width / 2) - 200; // Center the 400px card
+        },
+        y: () => {
+          const { height } = getScreenDimensions();
+          return Math.max((height / 2) - 150, 50); // Center vertically, min 50px from top
+        },
+        scale: 1.25,
+        opacity: 1,
+        rotateY: 0,
+        zIndex: 1000,
+        transition: {
+          duration: 0.6,
+          type: "spring",
+          stiffness: 120,
+          damping: 20
+        }
+      } : {
+        ...movement.animate,
+        transition: {
+          ...movement.animate.transition,
+          delay: startDelay
+        }
+      }}
+      onHoverStart={handleHover}
+      onHoverEnd={handleHoverEnd}
+    >
+      {/* Enhanced Card Content */}
+      <div className="relative h-full bg-gradient-to-br from-white/12 to-white/6 backdrop-blur-xl rounded-2xl border border-white/20 p-6 overflow-hidden shadow-2xl transform-gpu">
+
+        {/* Enhanced Background Overlay */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl"
+          animate={{
+            opacity: isHovered ? 0.8 : 0.3
+          }}
+          transition={{ duration: 0.3 }}
+        />
+
+        {/* Subtle Glow Effect */}
+        <motion.div
+          className={`absolute inset-0 bg-gradient-to-br ${testimonial.gradient} rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
+          animate={{
+            scale: [1, 1.05, 1],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+
+        {/* Compact Quote Icon */}
+        <motion.div
+          className="absolute -top-3 -right-3 w-10 h-10 bg-gradient-to-br from-[hsl(45_85%_75%)] to-[hsl(160_85%_45%)] rounded-full flex items-center justify-center shadow-lg"
+          animate={{
+            rotate: [0, 10, -10, 0],
+            scale: [1, 1.1, 1]
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        >
+          <Quote className="w-5 h-5 text-[hsl(220_25%_6%)]" />
+        </motion.div>
+
+        {/* Compact Content */}
+        <div className="relative z-10 h-full flex flex-col">
+
+          {/* Compact Stars */}
+          <div className="flex items-center gap-1 mb-3">
+            {[...Array(testimonial.rating)].map((_, i) => (
+              <motion.div
+                key={i}
+                animate={{
+                  scale: [1, 1.2, 1],
+                  rotate: [0, 180, 360]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  delay: i * 0.2
+                }}
+              >
+                <Star className="w-4 h-4 text-[hsl(45_85%_75%)] fill-current" />
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Dynamic Quote Content */}
+          <div className="flex-grow mb-6">
+            <blockquote
+              className={`leading-relaxed font-light italic transition-all duration-500 ${
+                isHovered ? 'text-base' : 'text-sm'
+              }`}
+              style={{ color: "hsl(210 25% 95%)" }}
+            >
+              "{isHovered
+                ? testimonial.content
+                : testimonial.content.length > 90
+                  ? testimonial.content.substring(0, 90) + '...'
+                  : testimonial.content}"
+            </blockquote>
+          </div>
+
+          {/* Compact Author Section */}
+          <div className="flex items-center gap-3">
+            {/* Avatar - larger when hovered */}
+            <div className="relative">
+              <div className={`rounded-full bg-gradient-to-br from-[hsl(45_85%_75%)] to-[hsl(160_85%_45%)] p-0.5 shadow-lg transition-all duration-300 ${
+                isHovered ? 'w-16 h-16' : 'w-12 h-12'
+              }`}>
+                <img
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  className="w-full h-full rounded-full object-cover"
+                />
+              </div>
+
+              {/* Small Sparkle */}
+              <motion.div
+                className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-br from-[hsl(160_85%_45%)] to-[hsl(220_85%_55%)] rounded-full flex items-center justify-center"
+                animate={{
+                  scale: [1, 1.3, 1],
+                  rotate: [0, 360]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity
+                }}
+              >
+                <Sparkles className="w-2 h-2 text-white" />
+              </motion.div>
+            </div>
+
+            {/* Author Info - larger when hovered */}
+            <div className="flex-1 min-w-0">
+              <h4
+                className={`font-bold transition-all duration-300 ${
+                  isHovered ? 'text-base' : 'text-sm'
+                } ${isHovered ? '' : 'truncate'}`}
+                style={{ color: "hsl(210 25% 98%)" }}
+              >
+                {testimonial.name}
+              </h4>
+
+              <p
+                className={`transition-all duration-300 ${
+                  isHovered ? 'text-sm' : 'text-xs'
+                } ${isHovered ? '' : 'truncate'}`}
+                style={{ color: "hsl(45 85% 75%)" }}
+              >
+                {testimonial.role}
+              </p>
+
+              <p
+                className={`transition-all duration-300 ${
+                  isHovered ? 'text-sm' : 'text-xs'
+                } ${isHovered ? '' : 'truncate'}`}
+                style={{ color: "hsl(210 25% 70%)" }}
+              >
+                {testimonial.company}
+              </p>
+            </div>
+
+            {/* Small Badge */}
+            <motion.div
+              className="bg-gradient-to-br from-[hsl(220_85%_55%)] to-[hsl(15_85%_65%)] p-2 rounded-lg shadow-lg"
+              animate={{
+                rotate: [0, 10, -10, 0]
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity
+              }}
+            >
+              <Award className="w-3 h-3 text-white" />
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Moving Trail Effect */}
+        <motion.div
+          className="absolute inset-0 rounded-xl"
+          style={{
+            background: `linear-gradient(90deg, transparent 0%, ${testimonial.gradient.split(' ')[1]} 50%, transparent 100%)`,
+            opacity: 0.1
+          }}
+          animate={{
+            x: [-50, 50, -50]
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+      </div>
+    </motion.div>
+  );
+}
+
 export function TestimonialsSection() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
@@ -191,8 +462,8 @@ export function TestimonialsSection() {
           transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
         />
 
-        {/* Floating Elegant Particles */}
-        {[...Array(15)].map((_, i) => (
+        {/* Optimized Floating Particles */}
+        {[...Array(8)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute"
@@ -201,15 +472,13 @@ export function TestimonialsSection() {
               top: `${Math.random() * 100}%`,
             }}
             animate={{
-              y: [0, -60, 0],
-              x: [0, Math.random() * 40 - 20, 0],
-              opacity: [0.1, 0.4, 0.1],
-              scale: [0.5, 1, 0.5]
+              y: [0, -40, 0],
+              opacity: [0.1, 0.3, 0.1],
             }}
             transition={{
-              duration: 12 + Math.random() * 6,
+              duration: 15,
               repeat: Infinity,
-              delay: Math.random() * 8,
+              delay: i * 2,
               ease: "easeInOut"
             }}
           >
@@ -280,212 +549,14 @@ export function TestimonialsSection() {
           </motion.p>
         </ScrollReveal>
 
-        {/* Passing Animated Testimonial Cards */}
-        <div className="relative h-[80vh] overflow-hidden">
+        {/* World-Class Animated Testimonial Cards */}
+        <div className="relative h-screen overflow-hidden bg-transparent">
           {testimonials.map((testimonial, index) => (
-            <motion.div
+            <TestimonialCard
               key={testimonial.id}
-              className="absolute group"
-              style={{
-                width: "350px",
-                height: "280px",
-              }}
-              initial={{
-                x: -400,
-                y: 50 + index * 80,
-                opacity: 0,
-                scale: 0.8
-              }}
-              animate={hoveredCard === testimonial.id ? {
-                scale: 1.2,
-                zIndex: 50,
-                y: 50 + index * 80 - 30,
-                x: typeof window !== 'undefined' ? (window.innerWidth / 2) - 175 : 600,
-                opacity: 1
-              } : hoveredCard !== null ? {
-                // When another card is hovered, keep this one visible but dimmed
-                opacity: 0.3,
-                scale: 0.9
-              } : {
-                x: [
-                  -400,
-                  typeof window !== 'undefined' ? window.innerWidth + 400 : 1600,
-                  -400
-                ],
-                opacity: [0, 1, 1, 1, 0],
-                scale: [0.8, 1, 1, 1, 0.8]
-              }}
-              transition={hoveredCard === testimonial.id ? {
-                duration: 0.8,
-                type: "spring",
-                stiffness: 120,
-                damping: 20
-              } : hoveredCard !== null ? {
-                duration: 0.3
-              } : {
-                duration: 60 + index * 8,
-                repeat: Infinity,
-                ease: "linear",
-                delay: index * 10
-              }}
-              onHoverStart={() => setHoveredCard(testimonial.id)}
-              onHoverEnd={() => setHoveredCard(null)}
-            >
-              {/* Compact Elegant Card */}
-              <div className="relative h-full bg-gradient-to-br from-white/15 to-white/8 backdrop-blur-xl rounded-xl border border-white/25 p-6 overflow-hidden shadow-2xl">
-
-                {/* Subtle Glow Effect */}
-                <motion.div
-                  className={`absolute inset-0 bg-gradient-to-br ${testimonial.gradient} rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
-                  animate={{
-                    scale: [1, 1.05, 1],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                />
-
-                {/* Compact Quote Icon */}
-                <motion.div
-                  className="absolute -top-3 -right-3 w-10 h-10 bg-gradient-to-br from-[hsl(45_85%_75%)] to-[hsl(160_85%_45%)] rounded-full flex items-center justify-center shadow-lg"
-                  animate={{
-                    rotate: [0, 10, -10, 0],
-                    scale: [1, 1.1, 1]
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                >
-                  <Quote className="w-5 h-5 text-[hsl(220_25%_6%)]" />
-                </motion.div>
-
-                {/* Compact Content */}
-                <div className="relative z-10 h-full flex flex-col">
-
-                  {/* Compact Stars */}
-                  <div className="flex items-center gap-1 mb-3">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <motion.div
-                        key={i}
-                        animate={{
-                          scale: [1, 1.2, 1],
-                          rotate: [0, 180, 360]
-                        }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                          delay: i * 0.2
-                        }}
-                      >
-                        <Star className="w-4 h-4 text-[hsl(45_85%_75%)] fill-current" />
-                      </motion.div>
-                    ))}
-                  </div>
-
-                  {/* Dynamic Quote Content */}
-                  <div className="flex-grow mb-4">
-                    <blockquote
-                      className="text-sm leading-relaxed font-light italic transition-all duration-300"
-                      style={{ color: "hsl(210 25% 95%)" }}
-                    >
-                      "{hoveredCard === testimonial.id
-                        ? testimonial.content
-                        : testimonial.content.length > 120
-                          ? testimonial.content.substring(0, 120) + '...'
-                          : testimonial.content}"
-                    </blockquote>
-                  </div>
-
-                  {/* Compact Author Section */}
-                  <div className="flex items-center gap-3">
-                    {/* Small Avatar */}
-                    <div className="relative">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[hsl(45_85%_75%)] to-[hsl(160_85%_45%)] p-0.5 shadow-lg">
-                        <img
-                          src={testimonial.image}
-                          alt={testimonial.name}
-                          className="w-full h-full rounded-full object-cover"
-                        />
-                      </div>
-
-                      {/* Small Sparkle */}
-                      <motion.div
-                        className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-br from-[hsl(160_85%_45%)] to-[hsl(220_85%_55%)] rounded-full flex items-center justify-center"
-                        animate={{
-                          scale: [1, 1.3, 1],
-                          rotate: [0, 360]
-                        }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity
-                        }}
-                      >
-                        <Sparkles className="w-2 h-2 text-white" />
-                      </motion.div>
-                    </div>
-
-                    {/* Compact Author Info */}
-                    <div className="flex-1 min-w-0">
-                      <h4
-                        className="font-bold text-sm truncate"
-                        style={{ color: "hsl(210 25% 98%)" }}
-                      >
-                        {testimonial.name}
-                      </h4>
-
-                      <p
-                        className="text-xs truncate"
-                        style={{ color: "hsl(45 85% 75%)" }}
-                      >
-                        {testimonial.role}
-                      </p>
-
-                      <p
-                        className="text-xs truncate"
-                        style={{ color: "hsl(210 25% 70%)" }}
-                      >
-                        {testimonial.company}
-                      </p>
-                    </div>
-
-                    {/* Small Badge */}
-                    <motion.div
-                      className="bg-gradient-to-br from-[hsl(220_85%_55%)] to-[hsl(15_85%_65%)] p-2 rounded-lg shadow-lg"
-                      animate={{
-                        rotate: [0, 10, -10, 0]
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity
-                      }}
-                    >
-                      <Award className="w-3 h-3 text-white" />
-                    </motion.div>
-                  </div>
-                </div>
-
-                {/* Moving Trail Effect */}
-                <motion.div
-                  className="absolute inset-0 rounded-xl"
-                  style={{
-                    background: `linear-gradient(90deg, transparent 0%, ${testimonial.gradient.split(' ')[1]} 50%, transparent 100%)`,
-                    opacity: 0.1
-                  }}
-                  animate={{
-                    x: [-50, 50, -50]
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                />
-              </div>
-            </motion.div>
+              testimonial={testimonial}
+              index={index}
+            />
           ))}
         </div>
 

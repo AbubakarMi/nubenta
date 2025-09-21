@@ -99,8 +99,12 @@ export function OurWorkSection() {
                           src={project.image}
                           alt={project.title}
                           data-ai-hint={project.hint}
-                          layout="fill"
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           className="object-cover transition-transform duration-300 group-hover:scale-105"
+                          loading="lazy"
+                          placeholder="blur"
+                          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R+OWYg+Y7Apdy4Bx1xCaXTIACLkjq8LNQM1Rh0JNj8EzL6gBDnANCgHBTwvEP8AQcAaykxKGD3bCjABmJrH5ZwGsYCKu5k47t1TkCpWwOhFktquY0SB5BNRcTFc/nGq8Y7OJIkQYo3AjHzZi4Y5sM1IVN5vRBQ=="
                         />
                       </div>
                       <CardContent className="p-6 flex-grow flex flex-col justify-between">
@@ -124,8 +128,12 @@ export function OurWorkSection() {
                         src={project.image}
                         alt={project.title}
                         data-ai-hint={project.hint}
-                        layout="fill"
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
                         className="object-cover rounded-l-lg"
+                        loading="lazy"
+                        placeholder="blur"
+                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R+OWYg+Y7Apdy4Bx1xCaXTIACLkjq8LNQM1Rh0JNj8EzL6gBDnANCgHBTwvEP8AQcAaykxKGD3bCjABmJrH5ZwGsYCKu5k47t1TkCpWwOhFktquY0SB5BNRcTFc/nGq8Y7OJIkQYo3AjHzZi4Y5sM1IVN5vRBQ=="
                       />
                     </div>
                     <div className="p-8 flex flex-col">
