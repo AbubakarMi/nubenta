@@ -1,7 +1,11 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { ScrollReveal } from '@/components/scroll-reveal';
+// Temporarily disable scroll reveal to fix blank content issue
+// import { ScrollReveal } from '@/components/scroll-reveal';
+const ScrollReveal = ({ children, className = "", ...props }: any) => (
+  <div className={className}>{children}</div>
+);
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import {
@@ -733,7 +737,8 @@ export default function TechnologyPage() {
             {/* World-Class Title */}
             <motion.h1
               className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tight mb-6 md:mb-8"
-              initial={{ opacity: 0, y: 50 }}
+              style={{ opacity: 1 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.5 }}
             >
@@ -764,11 +769,11 @@ export default function TechnologyPage() {
 
             {/* Premium Subtitle */}
             <motion.p
-              initial={{ opacity: 0, y: 30 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, delay: 0.5 }}
               className="text-lg sm:text-xl md:text-2xl lg:text-3xl leading-relaxed max-w-5xl mx-auto mb-8 md:mb-12 px-4"
-              style={{ color: "hsl(210 25% 90%)" }}
+              style={{ color: "hsl(210 25% 90%)", opacity: 1 }}
             >
               Engineering the future with
               <span className="bg-gradient-to-r from-[hsl(220_85%_55%)] to-[hsl(160_85%_45%)] bg-clip-text text-transparent font-bold"> cutting-edge AI, cloud solutions, </span>
@@ -777,10 +782,11 @@ export default function TechnologyPage() {
 
             {/* Premium CTA */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
+              initial={false}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 1 }}
               className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+              style={{ opacity: 1 }}
             >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button

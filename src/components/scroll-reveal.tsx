@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from 'framer-motion';
-import { useRef, ReactNode } from 'react';
+import { useRef, ReactNode, useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 
 interface ScrollRevealProps {
@@ -24,7 +24,17 @@ export function ScrollReveal({
   stagger = 0.1
 }: ScrollRevealProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [isMounted, setIsMounted] = useState(false);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // If not mounted yet, show content immediately to prevent flash
+  if (!isMounted) {
+    return <div className={cn(className)}>{children}</div>;
+  }
 
   const directionVariants = {
     up: { y: distance, opacity: 0 },
@@ -44,19 +54,6 @@ export function ScrollReveal({
         delay,
         ease: [0.25, 0.46, 0.45, 0.94] as const,
         staggerChildren: stagger
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: directionVariants[direction],
-    visible: {
-      x: 0,
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: duration * 0.8,
-        ease: [0.25, 0.46, 0.45, 0.94] as const
       }
     }
   };
