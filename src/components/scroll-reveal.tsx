@@ -1,50 +1,72 @@
 "use client";
 
-import React, { useRef, useEffect, useState, type ReactNode } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { useRef, ReactNode, useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 
-type ScrollRevealProps = {
+interface ScrollRevealProps {
   children: ReactNode;
   className?: string;
   delay?: number;
-  threshold?: number;
-};
+  direction?: 'up' | 'down' | 'left' | 'right';
+  distance?: number;
+  duration?: number;
+  stagger?: number;
+}
 
-export function ScrollReveal({ children, className, delay = 0, threshold = 0.1 }: ScrollRevealProps) {
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+export function ScrollReveal({
+  children,
+  className = "",
+  delay = 0,
+  direction = 'up',
+  distance = 30,
+  duration = 0.8,
+  stagger = 0.1
+}: ScrollRevealProps) {
+  const ref = useRef(null);
+  const [isMounted, setIsMounted] = useState(false);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   useEffect(() => {
-    const element = ref.current;
-    if (!element) return;
+    setIsMounted(true);
+  }, []);
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            setIsVisible(true);
-            observer.unobserve(element);
-          }, delay);
-        }
-      },
-      { threshold }
-    );
+  // If not mounted yet, show content immediately to prevent flash
+  if (!isMounted) {
+    return <div className={cn(className)}>{children}</div>;
+  }
 
-    observer.observe(element);
+  const directionVariants = {
+    up: { y: distance, opacity: 0 },
+    down: { y: -distance, opacity: 0 },
+    left: { x: distance, opacity: 0 },
+    right: { x: -distance, opacity: 0 }
+  };
 
-    return () => observer.disconnect();
-  }, [delay, threshold]);
+  const containerVariants = {
+    hidden: directionVariants[direction],
+    visible: {
+      x: 0,
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration,
+        delay,
+        ease: [0.25, 0.46, 0.45, 0.94] as const,
+        staggerChildren: stagger
+      }
+    }
+  };
 
   return (
-    <div
+    <motion.div
       ref={ref}
-      className={cn(
-        'transition-all duration-700 ease-out',
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8',
-        className
-      )}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={containerVariants}
+      className={cn(className)}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }
