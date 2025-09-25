@@ -67,40 +67,99 @@ const technologies = [
   { name: "TensorFlow", level: 92 }
 ];
 
-const industries = [
-  { name: "Financial Services", icon: Banknote, projects: "150+" },
-  { name: "Healthcare", icon: Heart, projects: "120+" },
-  { name: "Manufacturing", icon: Factory, projects: "100+" },
-  { name: "Retail & E-commerce", icon: ShoppingCart, projects: "90+" },
-  { name: "Government", icon: Building, projects: "80+" },
-  { name: "Energy & Utilities", icon: Zap, projects: "70+" }
-];
-
-const stats = [
-  { number: "1000+", label: "Projects Delivered", icon: Rocket },
-  { number: "500+", label: "Enterprise Clients", icon: Users },
-  { number: "25+", label: "Countries Served", icon: Globe },
-  { number: "99.8%", label: "Success Rate", icon: Award }
-];
-
-const testimonials = [
+const solutions = [
   {
-    quote: "Nubenta Technology transformed our entire infrastructure. Their AI solutions increased our efficiency by 300%.",
-    author: "Sarah Johnson",
-    position: "CTO, Fortune 500 Company",
-    company: "TechCorp Global"
+    name: "AI-Powered Fintech",
+    icon: TrendingUp,
+    description: "Revolutionary blockchain and AI solutions transforming financial services",
+    technologies: ["Blockchain", "DeFi", "Smart Contracts", "AI Trading"],
+    impact: "300% ROI"
   },
   {
-    quote: "The cloud migration was seamless. Zero downtime and 60% cost reduction exceeded all expectations.",
-    author: "Michael Chen",
-    position: "Head of Infrastructure",
-    company: "Global Manufacturing Inc"
+    name: "Healthcare AI",
+    icon: Heart,
+    description: "Advanced diagnostic AI and telemedicine platforms saving lives",
+    technologies: ["Computer Vision", "NLP", "IoMT", "Predictive Analytics"],
+    impact: "99.7% Accuracy"
   },
   {
-    quote: "Their cybersecurity implementation saved us from multiple threats. World-class expertise.",
-    author: "Dr. Amanda Foster",
-    position: "Chief Security Officer",
-    company: "Healthcare Systems"
+    name: "Smart Manufacturing",
+    icon: Factory,
+    description: "Industry 4.0 solutions with IoT, robotics, and predictive maintenance",
+    technologies: ["IoT", "Digital Twins", "Robotics", "Edge Computing"],
+    impact: "40% Efficiency"
+  },
+  {
+    name: "Quantum Computing",
+    icon: Zap,
+    description: "Next-generation quantum algorithms for complex problem solving",
+    technologies: ["Quantum ML", "Quantum Cryptography", "Optimization", "Simulation"],
+    impact: "1000x Speed"
+  },
+  {
+    name: "AR/VR Experiences",
+    icon: Globe,
+    description: "Immersive extended reality solutions for training and collaboration",
+    technologies: ["WebXR", "Unity", "Unreal Engine", "Spatial Computing"],
+    impact: "85% Engagement"
+  },
+  {
+    name: "Autonomous Systems",
+    icon: Rocket,
+    description: "Self-driving and autonomous decision-making systems",
+    technologies: ["Computer Vision", "LIDAR", "Sensor Fusion", "Deep RL"],
+    impact: "Zero Accidents"
+  }
+];
+
+const techStats = [
+  { number: "50TB+", label: "Data Processed Daily", icon: Database },
+  { number: "99.99%", label: "System Uptime", icon: Shield },
+  { number: "<10ms", label: "API Response Time", icon: Zap },
+  { number: "1000+", label: "AI Models Deployed", icon: Brain }
+];
+
+const achievements = [
+  {
+    title: "Innovation Excellence",
+    description: "Leading breakthrough research in AI and quantum computing applications",
+    icon: Lightbulb,
+    metrics: ["50+ Patents Filed", "12 Research Papers", "Industry Recognition"]
+  },
+  {
+    title: "Global Infrastructure",
+    description: "World-class distributed systems serving millions of users globally",
+    icon: Globe,
+    metrics: ["99.99% Uptime", "Sub-10ms Response", "Global CDN Network"]
+  },
+  {
+    title: "Security Leadership",
+    description: "Pioneering zero-trust architecture and advanced threat prevention",
+    icon: Shield,
+    metrics: ["Zero Breaches", "SOC2 Certified", "Military-Grade Encryption"]
+  }
+];
+
+const techStack = [
+  {
+    category: "AI & Machine Learning",
+    technologies: ["TensorFlow", "PyTorch", "OpenAI GPT", "Hugging Face", "Vertex AI"],
+    color: "from-[hsl(220_85%_55%)] to-[hsl(160_85%_45%)]"
+  },
+  {
+    category: "Cloud & Infrastructure",
+    technologies: ["AWS", "Google Cloud", "Azure", "Kubernetes", "Docker", "Terraform"],
+    color: "from-[hsl(160_85%_45%)] to-[hsl(45_85%_75%)]"
+  },
+  {
+    category: "Frontend & Mobile",
+    technologies: ["React", "Next.js", "TypeScript", "React Native", "Flutter"],
+    color: "from-[hsl(45_85%_75%)] to-[hsl(15_85%_65%)]"
+  },
+  {
+    category: "Backend & Data",
+    technologies: ["Node.js", "Python", "PostgreSQL", "MongoDB", "Redis"],
+    color: "from-[hsl(15_85%_65%)] to-[hsl(220_85%_55%)]"
   }
 ];
 
@@ -464,7 +523,7 @@ export default function TechnologyPage() {
             transition={{ delay: 0.2, duration: 1 }}
             className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-16 text-center max-w-5xl mx-auto"
           >
-            {stats.map((stat, index) => (
+            {techStats.map((stat, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.8, y: 40 }}
@@ -696,7 +755,7 @@ export default function TechnologyPage() {
         </div>
       </section>
 
-      {/* Industries Section */}
+      {/* Advanced Solutions Section */}
       <section className="py-24">
         <div className="container mx-auto px-6 max-w-7xl">
           <motion.div
@@ -712,10 +771,10 @@ export default function TechnologyPage() {
               transition={{ duration: 1 }}
             >
               <span className="bg-gradient-to-r from-[hsl(15_85%_65%)] via-[hsl(160_85%_45%)] to-[hsl(220_85%_55%)] bg-clip-text text-transparent">
-                Industry
+                Future-Ready
               </span>
               <br />
-              <span className="text-white">Excellence</span>
+              <span className="text-white">Solutions</span>
             </motion.h2>
             <motion.p
               className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
@@ -723,19 +782,19 @@ export default function TechnologyPage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              Deep domain expertise across critical industry verticals.
+              Pioneering next-generation technologies that define tomorrow's digital landscape.
             </motion.p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {industries.map((industry, index) => (
+            {solutions.map((solution, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 40, scale: 0.95 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ scale: 1.05, y: -8 }}
-                className="group p-6 rounded-xl bg-gradient-to-br from-white/8 to-white/2 border border-white/10 hover:border-white/20 transition-all duration-500 cursor-pointer backdrop-blur-sm"
+                className="group p-8 rounded-2xl bg-gradient-to-br from-white/8 to-white/2 border border-white/10 hover:border-white/20 transition-all duration-500 cursor-pointer backdrop-blur-sm relative overflow-hidden"
               >
                 {/* Glow Effect */}
                 <motion.div
@@ -743,38 +802,75 @@ export default function TechnologyPage() {
                   whileHover={{ scale: 1.1 }}
                 />
 
-                <div className="flex items-center justify-between mb-4 relative z-10">
-                  <div className="flex items-center gap-3">
-                    <motion.div
-                      className="w-12 h-12 rounded-lg bg-gradient-to-r from-[hsl(45_85%_75%)] to-[hsl(160_85%_45%)] flex items-center justify-center shadow-lg"
-                      whileHover={{ rotate: 360, scale: 1.1 }}
-                      transition={{ duration: 0.6 }}
-                    >
-                      <industry.icon className="w-6 h-6 text-white" />
-                    </motion.div>
-                    <motion.h3
-                      className="font-bold text-white group-hover:text-[hsl(45_85%_75%)] transition-colors duration-300"
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      {industry.name}
-                    </motion.h3>
-                  </div>
+                {/* Header */}
+                <div className="flex items-center justify-between mb-6 relative z-10">
+                  <motion.div
+                    className="w-14 h-14 rounded-xl bg-gradient-to-r from-[hsl(45_85%_75%)] to-[hsl(160_85%_45%)] flex items-center justify-center shadow-2xl"
+                    whileHover={{ rotate: 360, scale: 1.1 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <solution.icon className="w-7 h-7 text-white" />
+                  </motion.div>
                   <motion.span
-                    className="text-lg font-bold bg-gradient-to-r from-[hsl(160_85%_45%)] to-[hsl(45_85%_75%)] bg-clip-text text-transparent"
+                    className="px-3 py-1 rounded-full bg-gradient-to-r from-[hsl(160_85%_45%)] to-[hsl(45_85%_75%)] text-white text-sm font-bold"
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
                   >
-                    {industry.projects}
+                    {solution.impact}
                   </motion.span>
                 </div>
+
+                {/* Content */}
+                <motion.h3
+                  className="text-xl font-bold text-white mb-4 group-hover:text-[hsl(45_85%_75%)] transition-colors duration-300"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  {solution.name}
+                </motion.h3>
+
+                <motion.p
+                  className="text-gray-300 mb-6 leading-relaxed group-hover:text-gray-200 transition-colors duration-300"
+                >
+                  {solution.description}
+                </motion.p>
+
+                {/* Technologies */}
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {solution.technologies.map((tech, techIndex) => (
+                    <motion.span
+                      key={techIndex}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 + techIndex * 0.05 }}
+                      whileHover={{ scale: 1.1 }}
+                      className="px-3 py-1 rounded-full bg-white/10 text-white text-xs font-medium hover:bg-white/20 transition-all duration-300"
+                    >
+                      {tech}
+                    </motion.span>
+                  ))}
+                </div>
+
+                {/* CTA */}
+                <motion.div
+                  className="flex items-center text-[hsl(160_85%_45%)] hover:text-[hsl(160_85%_50%)] cursor-pointer group-hover:translate-x-2 transition-all duration-300"
+                  whileHover={{ x: 8 }}
+                >
+                  <span className="font-semibold mr-2">Explore Technology</span>
+                  <motion.div
+                    animate={{ x: [0, 4, 0] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    <ArrowRight className="w-4 h-4" />
+                  </motion.div>
+                </motion.div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Testimonials Section */}
+      {/* Achievements Section */}
       <section className="py-24 bg-gradient-to-r from-[hsl(220_25%_8%)] to-[hsl(220_25%_6%)]">
         <div className="container mx-auto px-6 max-w-7xl">
           <motion.div
@@ -790,10 +886,10 @@ export default function TechnologyPage() {
               transition={{ duration: 1 }}
             >
               <span className="bg-gradient-to-r from-[hsl(220_85%_55%)] via-[hsl(45_85%_75%)] to-[hsl(160_85%_45%)] bg-clip-text text-transparent">
-                Success
+                Technical
               </span>
               <br />
-              <span className="text-white">Stories</span>
+              <span className="text-white">Achievements</span>
             </motion.h2>
             <motion.p
               className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
@@ -801,12 +897,12 @@ export default function TechnologyPage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              Trusted by industry leaders worldwide.
+              Pushing the boundaries of technology innovation and excellence.
             </motion.p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
+            {achievements.map((achievement, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 60, scale: 0.9 }}
@@ -825,31 +921,286 @@ export default function TechnologyPage() {
                   initial={{ scale: 0, rotate: -180 }}
                   whileInView={{ scale: 1, rotate: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.2 + 0.3 }}
+                  className="inline-flex items-center justify-center w-14 h-14 mb-6 rounded-xl bg-gradient-to-r from-[hsl(160_85%_45%)] to-[hsl(45_85%_75%)] shadow-2xl"
                 >
-                  <Quote className="w-8 h-8 text-[hsl(160_85%_45%)] mb-6 relative z-10" />
+                  <achievement.icon className="w-7 h-7 text-white relative z-10" />
                 </motion.div>
 
-                <motion.p
-                  className="text-white mb-6 leading-relaxed italic relative z-10 group-hover:text-gray-100 transition-colors duration-300"
+                <motion.h3
+                  className="text-xl font-bold text-white mb-4 group-hover:text-[hsl(45_85%_75%)] transition-colors duration-300"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ duration: 0.8, delay: index * 0.2 + 0.5 }}
                 >
-                  "{testimonial.quote}"
+                  {achievement.title}
+                </motion.h3>
+
+                <motion.p
+                  className="text-gray-300 mb-6 leading-relaxed group-hover:text-gray-200 transition-colors duration-300"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.8, delay: index * 0.2 + 0.6 }}
+                >
+                  {achievement.description}
                 </motion.p>
 
                 <motion.div
-                  className="border-t border-white/10 pt-6 relative z-10"
+                  className="space-y-2"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.2 + 0.7 }}
                 >
-                  <div className="font-bold text-white group-hover:text-[hsl(45_85%_75%)] transition-colors duration-300">{testimonial.author}</div>
-                  <div className="text-gray-400 text-sm">{testimonial.position}</div>
-                  <div className="text-[hsl(160_85%_45%)] text-sm font-semibold">{testimonial.company}</div>
+                  {achievement.metrics.map((metric, idx) => (
+                    <div key={idx} className="flex items-center gap-3">
+                      <CheckCircle className="w-4 h-4 text-[hsl(160_85%_45%)] flex-shrink-0" />
+                      <span className="text-sm text-gray-400">{metric}</span>
+                    </div>
+                  ))}
                 </motion.div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Technology Stack Section */}
+      <section className="py-24">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <motion.h2
+              className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+            >
+              <span className="bg-gradient-to-r from-[hsl(15_85%_65%)] via-[hsl(160_85%_45%)] to-[hsl(220_85%_55%)] bg-clip-text text-transparent">
+                Advanced
+              </span>
+              <br />
+              <span className="text-white">Tech Stack</span>
+            </motion.h2>
+            <motion.p
+              className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              Leveraging cutting-edge technologies to build the future.
+            </motion.p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {techStack.map((stack, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+                whileHover={{ scale: 1.02, y: -5 }}
+                className="group p-8 rounded-2xl bg-gradient-to-br from-white/8 to-white/2 border border-white/10 hover:border-white/20 transition-all duration-500 cursor-pointer backdrop-blur-sm"
+              >
+                <motion.h3
+                  className="text-2xl font-bold text-white mb-6 group-hover:text-[hsl(45_85%_75%)] transition-colors duration-300"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  {stack.category}
+                </motion.h3>
+
+                <div className="flex flex-wrap gap-3">
+                  {stack.technologies.map((tech, techIndex) => (
+                    <motion.span
+                      key={techIndex}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 + techIndex * 0.05 }}
+                      whileHover={{ scale: 1.1, y: -2 }}
+                      className={`px-4 py-2 rounded-full bg-gradient-to-r ${stack.color} text-white text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-300`}
+                    >
+                      {tech}
+                    </motion.span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Innovation Showcase Section */}
+      <section className="py-24 bg-gradient-to-r from-[hsl(220_25%_8%)] to-[hsl(220_25%_6%)]">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <motion.h2
+              className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+            >
+              <span className="bg-gradient-to-r from-[hsl(45_85%_75%)] via-[hsl(160_85%_45%)] to-[hsl(220_85%_55%)] bg-clip-text text-transparent">
+                Innovation
+              </span>
+              <br />
+              <span className="text-white">Showcase</span>
+            </motion.h2>
+            <motion.p
+              className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              Experience our latest breakthrough technologies in action.
+            </motion.p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Interactive Demo */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="relative"
+            >
+              <div className="aspect-video bg-gradient-to-br from-white/10 to-white/5 rounded-2xl border border-white/20 backdrop-blur-sm overflow-hidden">
+                {/* Simulated Code Editor */}
+                <div className="p-6">
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                    <span className="text-gray-400 text-sm ml-4">AI_Assistant.py</span>
+                  </div>
+                  <div className="font-mono text-sm space-y-2">
+                    <motion.div
+                      className="text-purple-400"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ delay: 0.5 }}
+                    >
+                      <span className="text-blue-400">import</span> nubenta_ai <span className="text-blue-400">as</span> ai
+                    </motion.div>
+                    <motion.div
+                      className="text-green-400"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ delay: 0.7 }}
+                    >
+                      <span className="text-blue-400">def</span> <span className="text-yellow-400">revolutionize_business</span>():
+                    </motion.div>
+                    <motion.div
+                      className="text-gray-300 ml-4"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ delay: 0.9 }}
+                    >
+                      model = ai.<span className="text-purple-400">create_intelligence</span>()
+                    </motion.div>
+                    <motion.div
+                      className="text-gray-300 ml-4"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ delay: 1.1 }}
+                    >
+                      insights = model.<span className="text-purple-400">analyze_future</span>()
+                    </motion.div>
+                    <motion.div
+                      className="text-gray-300 ml-4"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ delay: 1.3 }}
+                    >
+                      <span className="text-blue-400">return</span> <span className="text-green-400">"Business Transformed ✨"</span>
+                    </motion.div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating Tech Icons */}
+              {[Brain, Code, Database, Cloud].map((Icon, index) => (
+                <motion.div
+                  key={index}
+                  className="absolute"
+                  style={{
+                    left: `${20 + index * 15}%`,
+                    top: `${10 + (index % 2) * 70}%`,
+                  }}
+                  animate={{
+                    y: [0, -10, 0],
+                    rotate: [0, 5, 0]
+                  }}
+                  transition={{
+                    duration: 3 + index,
+                    repeat: Infinity,
+                    delay: index * 0.5
+                  }}
+                >
+                  <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-[hsl(160_85%_45%)] to-[hsl(45_85%_75%)] flex items-center justify-center shadow-lg">
+                    <Icon className="w-4 h-4 text-white" />
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Content */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="space-y-8"
+            >
+              <div>
+                <h3 className="text-3xl font-bold text-white mb-4">
+                  <span className="bg-gradient-to-r from-[hsl(45_85%_75%)] to-[hsl(160_85%_45%)] bg-clip-text text-transparent">
+                    AI-Powered Development
+                  </span>
+                </h3>
+                <p className="text-xl text-gray-300 leading-relaxed">
+                  Our proprietary AI development framework accelerates project delivery by 10x while maintaining enterprise-grade quality and security.
+                </p>
+              </div>
+
+              <div className="grid gap-4">
+                {[
+                  "Automated code generation and optimization",
+                  "Real-time performance monitoring and scaling",
+                  "Advanced security threat detection and prevention",
+                  "Intelligent user experience personalization"
+                ].map((feature, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                    className="flex items-center gap-3"
+                  >
+                    <CheckCircle className="w-5 h-5 text-[hsl(160_85%_45%)] flex-shrink-0" />
+                    <span className="text-gray-300">{feature}</span>
+                  </motion.div>
+                ))}
+              </div>
+
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="inline-block"
+              >
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-[hsl(160_85%_45%)] to-[hsl(45_85%_75%)] hover:from-[hsl(160_85%_50%)] hover:to-[hsl(45_85%_70%)] text-white border-0 rounded-full px-8 py-4 text-lg font-bold shadow-2xl"
+                >
+                  <Rocket className="w-5 h-5 mr-2" />
+                  Experience the Future
+                </Button>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -880,10 +1231,10 @@ export default function TechnologyPage() {
               transition={{ duration: 1 }}
             >
               <span className="bg-gradient-to-r from-[hsl(220_85%_55%)] via-[hsl(160_85%_45%)] to-[hsl(45_85%_75%)] bg-clip-text text-transparent">
-                Ready to Transform
+                Build the Future
               </span>
               <br />
-              <span className="text-white">Your Business?</span>
+              <span className="text-white">With Us</span>
             </motion.h2>
 
             <motion.p
@@ -892,7 +1243,7 @@ export default function TechnologyPage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              Let's discuss how our world-class technology solutions can accelerate your business growth and innovation.
+              Partner with us to leverage cutting-edge technology and transform your vision into reality.
             </motion.p>
 
             <motion.div
@@ -907,7 +1258,7 @@ export default function TechnologyPage() {
               >
                 <Button size="lg" className="bg-gradient-to-r from-[hsl(220_85%_55%)] to-[hsl(160_85%_45%)] hover:from-[hsl(220_85%_60%)] hover:to-[hsl(160_85%_50%)] text-white border-0 rounded-full px-10 py-6 text-lg font-bold shadow-2xl">
                   <Mail className="w-5 h-5 mr-2" />
-                  Start a Project
+                  Start Innovation
                 </Button>
               </motion.div>
               <motion.div
@@ -916,7 +1267,7 @@ export default function TechnologyPage() {
               >
                 <Button variant="outline" size="lg" className="border-2 border-[hsl(160_85%_45%)] text-[hsl(160_85%_45%)] hover:bg-[hsl(160_85%_45%)] hover:text-white rounded-full px-10 py-6 text-lg font-bold">
                   <Phone className="w-5 h-5 mr-2" />
-                  Schedule Call
+                  Schedule Consultation
                 </Button>
               </motion.div>
             </motion.div>

@@ -12,7 +12,6 @@ const nextConfig: NextConfig = {
   /* Performance optimizations */
   compress: true,
   poweredByHeader: false,
-  swcMinify: true,
 
   /* Experimental features for performance */
   experimental: {
