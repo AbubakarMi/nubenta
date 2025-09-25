@@ -51,21 +51,11 @@ export function AnimatedCard({
         perspective: "1000px"
       }}
     >
-      {/* Glow effect */}
-      <motion.div
-        className={`absolute inset-0 bg-gradient-to-r from-${glowColor}/20 to-amber-400/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10`}
-        initial={{ scale: 0.8 }}
-        whileHover={{ scale: 1.1 }}
-        transition={{ duration: 0.5 }}
-      />
+      {/* Optimized Glow effect */}
+      <div className={`absolute inset-0 bg-gradient-to-r from-${glowColor}/10 to-amber-400/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10`} />
 
-      {/* Shimmer effect */}
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"
-        initial={{ x: "-100%" }}
-        whileHover={{ x: "100%" }}
-        transition={{ duration: 1 }}
-      />
+      {/* Simplified Shimmer effect */}
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
 
       {/* Content */}
       <div className="relative z-10 p-6">

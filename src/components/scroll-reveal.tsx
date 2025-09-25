@@ -25,7 +25,7 @@ export function ScrollReveal({
 }: ScrollRevealProps) {
   const ref = useRef(null);
   const [isMounted, setIsMounted] = useState(false);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const isInView = useInView(ref, { once: true, margin: "-50px", amount: 0.1 });
 
   useEffect(() => {
     setIsMounted(true);
@@ -33,6 +33,13 @@ export function ScrollReveal({
 
   // If not mounted yet, show content immediately to prevent flash
   if (!isMounted) {
+    return <div className={cn(className)}>{children}</div>;
+  }
+
+  // For better performance, reduce motion on slow devices
+  const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (prefersReducedMotion) {
     return <div className={cn(className)}>{children}</div>;
   }
 

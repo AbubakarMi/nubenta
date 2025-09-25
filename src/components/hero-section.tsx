@@ -62,62 +62,50 @@ export function HeroSection() {
           transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
         />
 
-        {/* Dynamic Floating Elements */}
-        {[...Array(12)].map((_, i) => (
+        {/* Optimized Floating Elements */}
+        {[...Array(6)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute"
+            className="absolute pointer-events-none"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              left: `${20 + i * 15}%`,
+              top: `${20 + (i % 3) * 25}%`,
             }}
             animate={{
-              x: [0, Math.random() * 200 - 100, 0],
-              y: [0, Math.random() * 200 - 100, 0],
-              rotate: [0, 360],
-              scale: [0.5, 1, 0.5],
-              opacity: [0.2, 0.6, 0.2],
+              y: [0, -20, 0],
+              opacity: [0.2, 0.5, 0.2],
             }}
             transition={{
-              duration: 8 + Math.random() * 8,
+              duration: 4 + i,
               repeat: Infinity,
-              delay: Math.random() * 5,
+              delay: i * 0.5,
               ease: "easeInOut"
             }}
           >
-            <div
-              className="w-3 h-3 rounded-full bg-gradient-to-r from-[hsl(45_85%_75%)] to-[hsl(160_85%_45%)] blur-sm"
-              style={{
-                boxShadow: `0 0 20px hsl(${45 + Math.random() * 115} 85% ${60 + Math.random() * 25}% / 0.5)`
-              }}
-            />
+            <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[hsl(45_85%_75%)] to-[hsl(160_85%_45%)] opacity-60" />
           </motion.div>
         ))}
 
-        {/* Floating Geometric Shapes */}
-        {[...Array(6)].map((_, i) => (
+        {/* Simplified Geometric Shapes */}
+        {[...Array(3)].map((_, i) => (
           <motion.div
             key={`shape-${i}`}
-            className="absolute"
+            className="absolute pointer-events-none"
             style={{
-              left: `${20 + i * 15}%`,
-              top: `${30 + (i % 2) * 40}%`,
+              left: `${30 + i * 20}%`,
+              top: `${40 + i * 10}%`,
             }}
             animate={{
-              rotate: [0, 360],
-              scale: [1, 1.2, 1],
-              y: [0, -30, 0]
+              y: [0, -15, 0]
             }}
             transition={{
-              duration: 6 + i * 2,
+              duration: 3 + i,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: i * 1
+              delay: i * 0.8
             }}
           >
-            <div
-              className={`w-6 h-6 ${i % 2 === 0 ? 'rounded-full' : i % 3 === 0 ? 'rotate-45' : 'rounded-sm'} bg-gradient-to-br from-[hsl(160_85%_45%_/_0.3)] to-[hsl(220_85%_55%_/_0.3)] backdrop-blur-sm border border-white/10`}
-            />
+            <div className="w-4 h-4 rounded-full bg-gradient-to-br from-[hsl(160_85%_45%_/_0.2)] to-[hsl(220_85%_55%_/_0.2)] backdrop-blur-sm" />
           </motion.div>
         ))}
       </div>

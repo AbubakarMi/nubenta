@@ -20,8 +20,8 @@ export function AboutSection() {
         {/* Elegant Gradient Foundation */}
         <div className="absolute inset-0 bg-gradient-to-br from-[hsl(220_25%_6%)] via-[hsl(220_20%_8%)] to-[hsl(220_25%_6%)]" />
 
-        {/* Sophisticated Moving Gradients */}
-        <motion.div
+        {/* Optimized Gradients */}
+        <div
           className="absolute inset-0 opacity-15"
           style={{
             background: `
@@ -30,23 +30,11 @@ export function AboutSection() {
               radial-gradient(circle at 50% 20%, hsl(220 85% 55% / 0.04) 0%, transparent 40%)
             `
           }}
-          animate={{
-            backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"]
-          }}
-          transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
         />
 
-        {/* Elegant Floating Orbs */}
-        <motion.div
-          className="absolute top-1/3 left-1/4 w-80 h-80 bg-gradient-to-r from-[hsl(45_85%_75%_/_0.08)] to-[hsl(160_85%_45%_/_0.06)] rounded-full blur-3xl"
-          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-gradient-to-r from-[hsl(220_85%_55%_/_0.06)] to-[hsl(15_85%_65%_/_0.08)] rounded-full blur-3xl"
-          animate={{ scale: [1.2, 1, 1.2], opacity: [0.6, 0.3, 0.6] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        />
+        {/* Simplified Background Orbs */}
+        <div className="absolute top-1/3 left-1/4 w-80 h-80 bg-gradient-to-r from-[hsl(45_85%_75%_/_0.08)] to-[hsl(160_85%_45%_/_0.06)] rounded-full blur-3xl opacity-50" />
+        <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-gradient-to-r from-[hsl(220_85%_55%_/_0.06)] to-[hsl(15_85%_65%_/_0.08)] rounded-full blur-3xl opacity-40" />
       </div>
 
       <div className="container mx-auto px-6 md:px-8 relative z-10 max-w-7xl">

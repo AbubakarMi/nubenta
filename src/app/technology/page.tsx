@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { TechHeader } from '@/components/technology/tech-header';
 import { TechFooter } from '@/components/technology/tech-footer';
+import { motion } from 'framer-motion';
 import {
   Code, Brain, Cloud, Shield, Database, Layers,
   ArrowRight, CheckCircle, Star, Users, Globe,
@@ -105,115 +106,483 @@ const testimonials = [
 
 export default function TechnologyPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="flex flex-col min-h-dvh bg-background">
       <TechHeader />
 
       {/* Hero Section */}
-      <section className="relative pt-20 pb-32 overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(220_25%_6%)] via-[hsl(220_20%_8%)] to-[hsl(220_25%_6%)]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[hsl(45_85%_75%_/_0.02)] via-transparent to-[hsl(160_85%_45%_/_0.02)]" />
+      <section className="relative pt-20 pb-32 overflow-hidden h-screen min-h-[100vh] flex items-center justify-center">
+        {/* Sophisticated Background System */}
+        <div className="absolute inset-0 -z-20">
+          {/* Primary Gradient Foundation */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[hsl(220_25%_6%)] via-[hsl(220_20%_8%)] to-[hsl(220_25%_6%)]" />
 
-        {/* Animated particles */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(6)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-2 h-2 bg-gradient-to-r from-[hsl(220_85%_55%)] to-[hsl(160_85%_45%)] rounded-full opacity-20"
-              style={{
-                left: `${10 + i * 15}%`,
-                top: `${20 + (i % 3) * 25}%`,
-                animation: `float ${3 + i * 0.5}s ease-in-out infinite ${i * 0.5}s`
-              }}
-            />
-          ))}
+          {/* Elegant Radial Overlays */}
+          <motion.div
+            className="absolute inset-0"
+            animate={{
+              background: [
+                `radial-gradient(circle at 25% 25%, hsl(45 85% 75% / 0.08) 0%, transparent 50%),
+                 radial-gradient(circle at 75% 75%, hsl(160 85% 45% / 0.06) 0%, transparent 50%),
+                 radial-gradient(circle at 50% 10%, hsl(220 85% 55% / 0.04) 0%, transparent 40%)`,
+
+                `radial-gradient(circle at 75% 25%, hsl(45 85% 75% / 0.08) 0%, transparent 50%),
+                 radial-gradient(circle at 25% 75%, hsl(15 85% 65% / 0.06) 0%, transparent 50%),
+                 radial-gradient(circle at 50% 90%, hsl(160 85% 45% / 0.04) 0%, transparent 40%)`,
+
+                `radial-gradient(circle at 25% 25%, hsl(45 85% 75% / 0.08) 0%, transparent 50%),
+                 radial-gradient(circle at 75% 75%, hsl(160 85% 45% / 0.06) 0%, transparent 50%),
+                 radial-gradient(circle at 50% 10%, hsl(220 85% 55% / 0.04) 0%, transparent 40%)`
+              ]
+            }}
+            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+          />
         </div>
 
-        <div className="container mx-auto px-6 relative z-10 max-w-6xl">
-          <div className="text-center mb-16">
-            {/* Icon */}
-            <div className="inline-flex items-center justify-center w-20 h-20 mb-8 rounded-2xl bg-gradient-to-r from-[hsl(220_85%_55%)] to-[hsl(160_85%_45%)] shadow-2xl">
-              <Code className="w-10 h-10 text-white" />
+        {/* Dynamic Floating Elements */}
+        {[...Array(12)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              x: [0, Math.random() * 200 - 100, 0],
+              y: [0, Math.random() * 200 - 100, 0],
+              rotate: [0, 360],
+              scale: [0.5, 1, 0.5],
+              opacity: [0.2, 0.6, 0.2],
+            }}
+            transition={{
+              duration: 8 + Math.random() * 8,
+              repeat: Infinity,
+              delay: Math.random() * 5,
+              ease: "easeInOut"
+            }}
+          >
+            <div
+              className="w-3 h-3 rounded-full bg-gradient-to-r from-[hsl(45_85%_75%)] to-[hsl(160_85%_45%)] blur-sm"
+              style={{
+                boxShadow: `0 0 20px hsl(${45 + Math.random() * 115} 85% ${60 + Math.random() * 25}% / 0.5)`
+              }}
+            />
+          </motion.div>
+        ))}
+
+        {/* Sophisticated Glass Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/2 to-black/5 -z-10" />
+
+        <div className="container px-6 md:px-8 z-10 relative max-w-7xl">
+          <div className="flex flex-col items-center space-y-16">
+            {/* Elegant Technology Icon */}
+            <motion.div
+              initial={{ scale: 0, rotate: -45, y: -50 }}
+              animate={{ scale: 1, rotate: 0, y: 0 }}
+              transition={{
+                type: "spring",
+                stiffness: 100,
+                damping: 20,
+                delay: 0.3
+              }}
+              className="relative group"
+              whileHover={{ scale: 1.05 }}
+            >
+              {/* Sophisticated Glow */}
+              <motion.div
+                className="absolute inset-0 -m-8 bg-gradient-to-r from-[hsl(45_85%_75%_/_0.15)] via-[hsl(160_85%_45%_/_0.1)] to-[hsl(220_85%_55%_/_0.15)] rounded-full blur-xl"
+                animate={{
+                  scale: [1, 1.2, 1],
+                  opacity: [0.3, 0.6, 0.3]
+                }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              />
+
+              <Code className="h-16 w-16 md:h-20 md:w-20 text-[hsl(45_85%_75%)] relative z-10 drop-shadow-2xl" />
+            </motion.div>
+
+            {/* Sophisticated Typography */}
+            <div className="relative text-center max-w-5xl">
+              {/* Elegant Aura */}
+              <motion.div
+                className="absolute -inset-16 bg-gradient-to-r from-[hsl(45_85%_75%_/_0.08)] via-transparent to-[hsl(160_85%_45%_/_0.08)] rounded-full blur-3xl"
+                animate={{
+                  scale: [1, 1.1, 1],
+                  opacity: [0.3, 0.5, 0.3]
+                }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              />
+
+              {/* Main Title */}
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0, y: 40 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 80,
+                  damping: 20,
+                  delay: 0.8
+                }}
+                className="relative z-10"
+              >
+                <motion.h1
+                  className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tight leading-[0.9]"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <motion.span
+                    className="block bg-gradient-to-r from-[hsl(45_85%_75%)] via-[hsl(210_25%_98%)] to-[hsl(160_85%_45%)] bg-clip-text text-transparent"
+                    style={{
+                      backgroundSize: "200% 200%",
+                      filter: "drop-shadow(0 0 40px hsl(45 85% 75% / 0.3))"
+                    }}
+                    animate={{
+                      backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
+                    }}
+                    transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                  >
+                    WORLD-CLASS
+                  </motion.span>
+
+                  <motion.span
+                    className="block mt-2 bg-gradient-to-r from-[hsl(210_25%_98%)] via-[hsl(160_85%_45%)] to-[hsl(15_85%_65%)] bg-clip-text text-transparent"
+                    style={{
+                      backgroundSize: "200% 200%",
+                      filter: "drop-shadow(0 0 30px hsl(160 85% 45% / 0.3))"
+                    }}
+                    animate={{
+                      backgroundPosition: ["100% 50%", "0% 50%", "100% 50%"]
+                    }}
+                    transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+                  >
+                    TECHNOLOGY
+                  </motion.span>
+                </motion.h1>
+
+                {/* Sophisticated Tagline */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.5, duration: 1 }}
+                  className="mt-8 max-w-3xl mx-auto"
+                >
+                  <motion.p
+                    className="text-xl md:text-2xl lg:text-3xl font-light leading-relaxed"
+                    style={{ color: "hsl(210 25% 90%)" }}
+                  >
+                    <motion.span
+                      className="bg-gradient-to-r from-[hsl(210_25%_98%)] to-[hsl(45_85%_75%)] bg-clip-text text-transparent font-semibold"
+                      animate={{
+                        backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
+                      }}
+                      transition={{ duration: 4, repeat: Infinity }}
+                      style={{ backgroundSize: "200% 200%" }}
+                    >
+                      Engineering Excellence
+                    </motion.span>
+                    <motion.span
+                      className="mx-4 text-[hsl(45_85%_75%)]"
+                      animate={{
+                        scale: [1, 1.2, 1],
+                        opacity: [0.7, 1, 0.7]
+                      }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    >
+                      ✦
+                    </motion.span>
+                    <motion.span
+                      className="bg-gradient-to-r from-[hsl(160_85%_45%)] to-[hsl(15_85%_65%)] bg-clip-text text-transparent font-semibold"
+                      animate={{
+                        backgroundPosition: ["100% 50%", "0% 50%", "100% 50%"]
+                      }}
+                      transition={{ duration: 5, repeat: Infinity }}
+                      style={{ backgroundSize: "200% 200%" }}
+                    >
+                      Transforming Tomorrow
+                    </motion.span>
+                  </motion.p>
+                </motion.div>
+              </motion.div>
             </div>
 
-            {/* Title */}
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 tracking-tight">
-              <span className="bg-gradient-to-r from-[hsl(220_85%_55%)] via-white to-[hsl(160_85%_45%)] bg-clip-text text-transparent">
-                World-Class
-              </span>
-              <br />
-              <span className="text-white">Technology</span>
-            </h1>
+            {/* World-Class CTA Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 3.2, duration: 0.8 }}
+              className="relative group"
+            >
+              {/* Multi-layered Sophisticated Glow */}
+              <motion.div
+                className="absolute -inset-8 bg-gradient-to-r from-[hsl(45_85%_75%_/_0.4)] via-[hsl(160_85%_45%_/_0.3)] to-[hsl(220_85%_55%_/_0.4)] rounded-full blur-2xl"
+                animate={{
+                  scale: [1, 1.3, 1],
+                  opacity: [0.3, 0.6, 0.3],
+                  rotate: [0, 180, 360]
+                }}
+                transition={{ duration: 8, repeat: Infinity }}
+              />
 
-            {/* Subtitle */}
-            <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed">
-              Engineering the future with cutting-edge AI, cloud solutions, and enterprise-grade software that transforms businesses globally.
-            </p>
+              <motion.div
+                className="absolute -inset-4 bg-gradient-to-r from-[hsl(160_85%_45%_/_0.3)] via-[hsl(220_85%_55%_/_0.2)] to-[hsl(45_85%_75%_/_0.3)] rounded-full blur-xl"
+                animate={{
+                  scale: [1.2, 1, 1.2],
+                  opacity: [0.4, 0.2, 0.4],
+                  rotate: [360, 180, 0]
+                }}
+                transition={{ duration: 6, repeat: Infinity }}
+              />
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-gradient-to-r from-[hsl(220_85%_55%)] to-[hsl(160_85%_45%)] hover:from-[hsl(220_85%_60%)] hover:to-[hsl(160_85%_50%)] text-white border-0 rounded-full px-8">
-                <Link href="#services" className="flex items-center gap-2">
-                  Explore Services
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </Button>
-              <Button variant="outline" size="lg" className="border-2 border-[hsl(160_85%_45%)] text-[hsl(160_85%_45%)] hover:bg-[hsl(160_85%_45%)] hover:text-white rounded-full px-8">
-                <Link href="#contact" className="flex items-center gap-2">
-                  Get Started
-                  <Rocket className="w-4 h-4" />
-                </Link>
-              </Button>
-            </div>
+              {/* Premium Badge */}
+              <motion.div
+                className="absolute -top-4 -right-4 bg-gradient-to-r from-[hsl(15_85%_65%)] to-[hsl(220_85%_55%)] text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg border border-white/20"
+                animate={{
+                  y: [0, -3, 0],
+                  scale: [1, 1.05, 1]
+                }}
+                transition={{ duration: 3, repeat: Infinity }}
+              >
+                ✨ Premium Tech
+              </motion.div>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <motion.div
+                  whileHover={{ scale: 1.05, y: -4 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <Button
+                    asChild
+                    size="lg"
+                    className="relative bg-gradient-to-r from-[hsl(45_85%_75%)] to-[hsl(160_85%_45%)] hover:from-[hsl(45_85%_70%)] hover:to-[hsl(160_85%_40%)] text-[hsl(220_25%_6%)] font-bold rounded-full px-12 py-8 text-xl shadow-3xl transition-all duration-500 border-2 border-white/20 hover:border-white/40 group overflow-hidden"
+                  >
+                    <Link href="#services" className="flex items-center gap-4 relative z-10">
+                      <motion.div
+                        animate={{ rotate: [0, 15, 0] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                      >
+                        <Code className="h-6 w-6" />
+                      </motion.div>
+
+                      <span className="relative">
+                        Explore Services
+                        {/* Shimmer effect */}
+                        <motion.div
+                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                          initial={{ x: "-100%" }}
+                          animate={{ x: "100%" }}
+                          transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                        />
+                      </span>
+
+                      <motion.div
+                        animate={{ y: [0, 4, 0] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                      >
+                        <ArrowRight className="h-6 w-6" />
+                      </motion.div>
+                    </Link>
+                  </Button>
+                </motion.div>
+
+                <motion.div
+                  whileHover={{ scale: 1.05, y: -4 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <Button
+                    variant="outline"
+                    asChild
+                    size="lg"
+                    className="border-2 border-[hsl(160_85%_45%)] text-[hsl(160_85%_45%)] hover:bg-[hsl(160_85%_45%)] hover:text-white rounded-full px-12 py-8 text-xl font-bold transition-all duration-500"
+                  >
+                    <Link href="#contact" className="flex items-center gap-4">
+                      <Rocket className="h-6 w-6" />
+                      Get Started
+                    </Link>
+                  </Button>
+                </motion.div>
+              </div>
+
+              {/* Floating Elements Around CTA */}
+              {[...Array(3)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute"
+                  style={{
+                    left: `${20 + i * 30}%`,
+                    top: `${i % 2 === 0 ? '-20px' : '120px'}`,
+                  }}
+                  animate={{
+                    y: [0, -10, 0],
+                    opacity: [0.4, 0.8, 0.4],
+                    scale: [1, 1.2, 1]
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    delay: i * 0.7
+                  }}
+                >
+                  <div className={`w-2 h-2 rounded-full bg-gradient-to-r from-[hsl(45_85%_75%)] to-[hsl(160_85%_45%)] blur-sm`} />
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Refined Scroll Indicator */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 4, duration: 1 }}
+              className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+            >
+              <motion.div
+                animate={{ y: [0, 8, 0] }}
+                transition={{ duration: 3, repeat: Infinity }}
+                className="flex flex-col items-center gap-3 text-white/50"
+              >
+                <span className="text-xs font-medium tracking-wider uppercase">Explore</span>
+                <div className="w-5 h-8 border border-white/20 rounded-full flex justify-center">
+                  <motion.div
+                    animate={{ y: [0, 12, 0] }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                    className="w-0.5 h-2 bg-white/40 rounded-full mt-1.5"
+                  />
+                </div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-gradient-to-r from-[hsl(220_25%_8%)] to-[hsl(220_25%_6%)]">
-        <div className="container mx-auto px-6 max-w-6xl">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+      {/* Elegant Statistics */}
+      <section className="py-24 bg-gradient-to-r from-[hsl(220_25%_8%)] to-[hsl(220_25%_6%)]">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 1 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-16 text-center max-w-5xl mx-auto"
+          >
             {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="inline-flex items-center justify-center w-12 h-12 mb-4 rounded-xl bg-gradient-to-r from-[hsl(160_85%_45%)] to-[hsl(45_85%_75%)]">
-                  <stat.icon className="w-6 h-6 text-white" />
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.8, y: 40 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{
+                  delay: 0.5 + index * 0.2,
+                  duration: 0.8,
+                  type: "spring",
+                  stiffness: 100
+                }}
+                whileHover={{
+                  scale: 1.05,
+                  y: -8
+                }}
+                className="relative group"
+              >
+                {/* Elegant Glow */}
+                <motion.div
+                  className="absolute inset-0 -m-4 bg-gradient-to-r from-[hsl(160_85%_45%)] to-[hsl(45_85%_75%)] rounded-2xl blur-xl opacity-20"
+                  animate={{
+                    scale: [1, 1.1, 1],
+                    opacity: [0.2, 0.4, 0.2]
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    delay: index * 0.8
+                  }}
+                />
+
+                {/* Sophisticated Card */}
+                <div className="relative bg-gradient-to-br from-white/8 to-white/2 backdrop-blur-xl rounded-2xl p-6 md:p-8 border border-white/10 group-hover:border-white/20 transition-all duration-500">
+                  <div className="inline-flex items-center justify-center w-14 h-14 mb-6 rounded-xl bg-gradient-to-r from-[hsl(160_85%_45%)] to-[hsl(45_85%_75%)] shadow-2xl">
+                    <stat.icon className="w-7 h-7 text-white" />
+                  </div>
+
+                  <motion.div
+                    className="text-3xl md:text-4xl lg:text-5xl font-black mb-2 bg-gradient-to-r from-[hsl(160_85%_45%)] to-[hsl(45_85%_75%)] bg-clip-text text-transparent"
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    {stat.number}
+                  </motion.div>
+
+                  <div className="text-white/70 group-hover:text-white/90 transition-colors font-medium text-sm md:text-base">
+                    {stat.label}
+                  </div>
                 </div>
-                <div className="text-3xl font-black text-white mb-2">{stat.number}</div>
-                <div className="text-gray-400 font-medium">{stat.label}</div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Services Section */}
       <section id="services" className="py-24">
-        <div className="container mx-auto px-6 max-w-6xl">
+        <div className="container mx-auto px-6 max-w-7xl">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-              Our Services
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <motion.h2
+              className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+            >
+              <span className="bg-gradient-to-r from-[hsl(45_85%_75%)] via-[hsl(160_85%_45%)] to-[hsl(220_85%_55%)] bg-clip-text text-transparent">
+                Our Premium
+              </span>
+              <br />
+              <span className="text-white">Services</span>
+            </motion.h2>
+            <motion.p
+              className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
               Comprehensive technology solutions that drive innovation and deliver measurable business results.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
           {/* Services Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="group relative p-8 rounded-2xl bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 hover:border-white/20 transition-all duration-300 hover:transform hover:scale-105"
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+                whileHover={{ scale: 1.05, y: -10 }}
+                className="group relative p-8 rounded-2xl bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 hover:border-white/20 transition-all duration-500 cursor-pointer"
               >
+                {/* Sophisticated Glow Effect */}
+                <motion.div
+                  className={`absolute inset-0 -m-2 bg-gradient-to-r ${service.color} opacity-0 group-hover:opacity-20 blur-xl rounded-2xl transition-all duration-500`}
+                  whileHover={{ scale: 1.1 }}
+                />
                 {/* Icon */}
-                <div className={`inline-flex items-center justify-center w-14 h-14 mb-6 rounded-xl bg-gradient-to-r ${service.color}`}>
+                <motion.div
+                  className={`inline-flex items-center justify-center w-14 h-14 mb-6 rounded-xl bg-gradient-to-r ${service.color} shadow-2xl`}
+                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  transition={{ duration: 0.6 }}
+                >
                   <service.icon className="w-7 h-7 text-white" />
-                </div>
+                </motion.div>
 
                 {/* Content */}
-                <h3 className="text-xl font-bold text-white mb-4">{service.title}</h3>
-                <p className="text-gray-300 mb-6 leading-relaxed">{service.description}</p>
+                <motion.h3
+                  className="text-xl font-bold text-white mb-4 group-hover:text-[hsl(45_85%_75%)] transition-colors duration-300"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  {service.title}
+                </motion.h3>
+                <p className="text-gray-300 mb-6 leading-relaxed group-hover:text-gray-200 transition-colors duration-300">{service.description}</p>
 
                 {/* Features */}
                 <div className="space-y-2 mb-6">
@@ -226,11 +595,19 @@ export default function TechnologyPage() {
                 </div>
 
                 {/* CTA */}
-                <div className="flex items-center text-[hsl(160_85%_45%)] hover:text-[hsl(160_85%_50%)] cursor-pointer group-hover:translate-x-1 transition-transform">
+                <motion.div
+                  className="flex items-center text-[hsl(160_85%_45%)] hover:text-[hsl(160_85%_50%)] cursor-pointer group-hover:translate-x-2 transition-all duration-300"
+                  whileHover={{ x: 8 }}
+                >
                   <span className="font-semibold mr-2">Learn More</span>
-                  <ArrowRight className="w-4 h-4" />
-                </div>
-              </div>
+                  <motion.div
+                    animate={{ x: [0, 4, 0] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    <ArrowRight className="w-4 h-4" />
+                  </motion.div>
+                </motion.div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -238,32 +615,82 @@ export default function TechnologyPage() {
 
       {/* Technologies Section */}
       <section className="py-24 bg-gradient-to-r from-[hsl(220_25%_8%)] to-[hsl(220_25%_6%)]">
-        <div className="container mx-auto px-6 max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-              Our Technology Stack
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <motion.h2
+              className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+            >
+              <span className="bg-gradient-to-r from-[hsl(220_85%_55%)] via-[hsl(160_85%_45%)] to-[hsl(45_85%_75%)] bg-clip-text text-transparent">
+                Technology
+              </span>
+              <br />
+              <span className="text-white">Excellence</span>
+            </motion.h2>
+            <motion.p
+              className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
               Cutting-edge technologies powering world-class solutions.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {technologies.map((tech, index) => (
-              <div key={index} className="p-6 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 transition-colors">
-                <div className="flex justify-between items-center mb-3">
-                  <h3 className="font-bold text-white">{tech.name}</h3>
-                  <span className="text-lg font-black bg-gradient-to-r from-[hsl(160_85%_45%)] to-[hsl(45_85%_75%)] bg-clip-text text-transparent">
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 40, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ scale: 1.05, y: -5 }}
+                className="group p-6 rounded-xl bg-gradient-to-br from-white/8 to-white/2 border border-white/10 hover:border-white/20 transition-all duration-500 cursor-pointer backdrop-blur-sm"
+              >
+                {/* Glow Effect */}
+                <motion.div
+                  className="absolute inset-0 -m-2 bg-gradient-to-r from-[hsl(160_85%_45%_/_0.2)] to-[hsl(45_85%_75%_/_0.2)] opacity-0 group-hover:opacity-100 blur-xl rounded-xl transition-all duration-500"
+                  whileHover={{ scale: 1.1 }}
+                />
+
+                <div className="flex justify-between items-center mb-4 relative z-10">
+                  <motion.h3
+                    className="font-bold text-white group-hover:text-[hsl(45_85%_75%)] transition-colors duration-300"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    {tech.name}
+                  </motion.h3>
+                  <motion.span
+                    className="text-lg font-black bg-gradient-to-r from-[hsl(160_85%_45%)] to-[hsl(45_85%_75%)] bg-clip-text text-transparent"
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
+                  >
                     {tech.level}%
-                  </span>
+                  </motion.span>
                 </div>
-                <div className="w-full bg-white/20 rounded-full h-2">
-                  <div
-                    className="h-2 bg-gradient-to-r from-[hsl(160_85%_45%)] to-[hsl(45_85%_75%)] rounded-full transition-all duration-1000"
-                    style={{ width: `${tech.level}%` }}
+                <div className="w-full bg-white/20 rounded-full h-3 relative overflow-hidden">
+                  <motion.div
+                    className="h-3 bg-gradient-to-r from-[hsl(160_85%_45%)] to-[hsl(45_85%_75%)] rounded-full shadow-lg"
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${tech.level}%` }}
+                    transition={{ duration: 1.5, delay: index * 0.1 + 0.5, ease: "easeOut" }}
+                  />
+                  {/* Shimmer effect */}
+                  <motion.div
+                    className="absolute top-0 left-0 h-full w-8 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                    animate={{ x: [-32, 400] }}
+                    transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
                   />
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -271,29 +698,77 @@ export default function TechnologyPage() {
 
       {/* Industries Section */}
       <section className="py-24">
-        <div className="container mx-auto px-6 max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-              Industry Expertise
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <motion.h2
+              className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+            >
+              <span className="bg-gradient-to-r from-[hsl(15_85%_65%)] via-[hsl(160_85%_45%)] to-[hsl(220_85%_55%)] bg-clip-text text-transparent">
+                Industry
+              </span>
+              <br />
+              <span className="text-white">Excellence</span>
+            </motion.h2>
+            <motion.p
+              className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
               Deep domain expertise across critical industry verticals.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {industries.map((industry, index) => (
-              <div key={index} className="p-6 rounded-xl bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 hover:border-white/20 transition-all duration-300">
-                <div className="flex items-center justify-between mb-4">
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ scale: 1.05, y: -8 }}
+                className="group p-6 rounded-xl bg-gradient-to-br from-white/8 to-white/2 border border-white/10 hover:border-white/20 transition-all duration-500 cursor-pointer backdrop-blur-sm"
+              >
+                {/* Glow Effect */}
+                <motion.div
+                  className="absolute inset-0 -m-2 bg-gradient-to-r from-[hsl(45_85%_75%_/_0.2)] to-[hsl(160_85%_45%_/_0.2)] opacity-0 group-hover:opacity-100 blur-xl rounded-xl transition-all duration-500"
+                  whileHover={{ scale: 1.1 }}
+                />
+
+                <div className="flex items-center justify-between mb-4 relative z-10">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-[hsl(45_85%_75%)] to-[hsl(160_85%_45%)] flex items-center justify-center">
-                      <industry.icon className="w-5 h-5 text-white" />
-                    </div>
-                    <h3 className="font-bold text-white">{industry.name}</h3>
+                    <motion.div
+                      className="w-12 h-12 rounded-lg bg-gradient-to-r from-[hsl(45_85%_75%)] to-[hsl(160_85%_45%)] flex items-center justify-center shadow-lg"
+                      whileHover={{ rotate: 360, scale: 1.1 }}
+                      transition={{ duration: 0.6 }}
+                    >
+                      <industry.icon className="w-6 h-6 text-white" />
+                    </motion.div>
+                    <motion.h3
+                      className="font-bold text-white group-hover:text-[hsl(45_85%_75%)] transition-colors duration-300"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      {industry.name}
+                    </motion.h3>
                   </div>
-                  <span className="text-sm font-bold text-[hsl(160_85%_45%)]">{industry.projects}</span>
+                  <motion.span
+                    className="text-lg font-bold bg-gradient-to-r from-[hsl(160_85%_45%)] to-[hsl(45_85%_75%)] bg-clip-text text-transparent"
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
+                  >
+                    {industry.projects}
+                  </motion.span>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -301,29 +776,79 @@ export default function TechnologyPage() {
 
       {/* Testimonials Section */}
       <section className="py-24 bg-gradient-to-r from-[hsl(220_25%_8%)] to-[hsl(220_25%_6%)]">
-        <div className="container mx-auto px-6 max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-              Client Success Stories
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <motion.h2
+              className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+            >
+              <span className="bg-gradient-to-r from-[hsl(220_85%_55%)] via-[hsl(45_85%_75%)] to-[hsl(160_85%_45%)] bg-clip-text text-transparent">
+                Success
+              </span>
+              <br />
+              <span className="text-white">Stories</span>
+            </motion.h2>
+            <motion.p
+              className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
               Trusted by industry leaders worldwide.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="p-8 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10">
-                <Quote className="w-8 h-8 text-[hsl(160_85%_45%)] mb-6" />
-                <p className="text-white mb-6 leading-relaxed italic">
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 60, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                whileHover={{ scale: 1.05, y: -10 }}
+                className="group p-8 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 hover:border-white/20 transition-all duration-500 cursor-pointer backdrop-blur-sm relative"
+              >
+                {/* Glow Effect */}
+                <motion.div
+                  className="absolute inset-0 -m-2 bg-gradient-to-r from-[hsl(160_85%_45%_/_0.1)] to-[hsl(45_85%_75%_/_0.1)] opacity-0 group-hover:opacity-100 blur-xl rounded-2xl transition-all duration-500"
+                  whileHover={{ scale: 1.1 }}
+                />
+
+                <motion.div
+                  initial={{ scale: 0, rotate: -180 }}
+                  whileInView={{ scale: 1, rotate: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.2 + 0.3 }}
+                >
+                  <Quote className="w-8 h-8 text-[hsl(160_85%_45%)] mb-6 relative z-10" />
+                </motion.div>
+
+                <motion.p
+                  className="text-white mb-6 leading-relaxed italic relative z-10 group-hover:text-gray-100 transition-colors duration-300"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.8, delay: index * 0.2 + 0.5 }}
+                >
                   "{testimonial.quote}"
-                </p>
-                <div className="border-t border-white/10 pt-6">
-                  <div className="font-bold text-white">{testimonial.author}</div>
+                </motion.p>
+
+                <motion.div
+                  className="border-t border-white/10 pt-6 relative z-10"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.2 + 0.7 }}
+                >
+                  <div className="font-bold text-white group-hover:text-[hsl(45_85%_75%)] transition-colors duration-300">{testimonial.author}</div>
                   <div className="text-gray-400 text-sm">{testimonial.position}</div>
                   <div className="text-[hsl(160_85%_45%)] text-sm font-semibold">{testimonial.company}</div>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -331,24 +856,71 @@ export default function TechnologyPage() {
 
       {/* CTA Section */}
       <section className="py-24">
-        <div className="container mx-auto px-6 max-w-4xl text-center">
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-            Ready to Transform Your Business?
-          </h2>
-          <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
-            Let's discuss how our world-class technology solutions can accelerate your business growth and innovation.
-          </p>
+        <div className="container mx-auto px-6 max-w-5xl text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="relative"
+          >
+            {/* Background Glow */}
+            <motion.div
+              className="absolute -inset-16 bg-gradient-to-r from-[hsl(45_85%_75%_/_0.1)] via-[hsl(160_85%_45%_/_0.05)] to-[hsl(220_85%_55%_/_0.1)] rounded-full blur-3xl"
+              animate={{
+                scale: [1, 1.2, 1],
+                opacity: [0.3, 0.6, 0.3]
+              }}
+              transition={{ duration: 8, repeat: Infinity }}
+            />
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-gradient-to-r from-[hsl(220_85%_55%)] to-[hsl(160_85%_45%)] hover:from-[hsl(220_85%_60%)] hover:to-[hsl(160_85%_50%)] text-white border-0 rounded-full px-8">
-              <Mail className="w-5 h-5 mr-2" />
-              Start a Project
-            </Button>
-            <Button variant="outline" size="lg" className="border-2 border-[hsl(160_85%_45%)] text-[hsl(160_85%_45%)] hover:bg-[hsl(160_85%_45%)] hover:text-white rounded-full px-8">
-              <Phone className="w-5 h-5 mr-2" />
-              Schedule Call
-            </Button>
-          </div>
+            <motion.h2
+              className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 relative z-10"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+            >
+              <span className="bg-gradient-to-r from-[hsl(220_85%_55%)] via-[hsl(160_85%_45%)] to-[hsl(45_85%_75%)] bg-clip-text text-transparent">
+                Ready to Transform
+              </span>
+              <br />
+              <span className="text-white">Your Business?</span>
+            </motion.h2>
+
+            <motion.p
+              className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed relative z-10"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              Let's discuss how our world-class technology solutions can accelerate your business growth and innovation.
+            </motion.p>
+
+            <motion.div
+              className="flex flex-col sm:flex-row gap-6 justify-center relative z-10"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+            >
+              <motion.div
+                whileHover={{ scale: 1.05, y: -4 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button size="lg" className="bg-gradient-to-r from-[hsl(220_85%_55%)] to-[hsl(160_85%_45%)] hover:from-[hsl(220_85%_60%)] hover:to-[hsl(160_85%_50%)] text-white border-0 rounded-full px-10 py-6 text-lg font-bold shadow-2xl">
+                  <Mail className="w-5 h-5 mr-2" />
+                  Start a Project
+                </Button>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05, y: -4 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button variant="outline" size="lg" className="border-2 border-[hsl(160_85%_45%)] text-[hsl(160_85%_45%)] hover:bg-[hsl(160_85%_45%)] hover:text-white rounded-full px-10 py-6 text-lg font-bold">
+                  <Phone className="w-5 h-5 mr-2" />
+                  Schedule Call
+                </Button>
+              </motion.div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
